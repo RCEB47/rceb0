@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bourses actualisées - RCEB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;padding-bottom:40px;}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+        .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-weight:700;font-size:1.4rem;color:#2563eb;}
+        .nav-links{display:flex;gap:24px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
+        .filters{background:white;border-radius:24px;padding:24px;margin:20px 0;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;}
+        .filter-group{display:flex;flex-direction:column;gap:6px;}
+        .filter-group label{font-weight:600;font-size:0.8rem;}
+        input,select{padding:10px 16px;border-radius:40px;border:1px solid #d1d5db;font-family:inherit;}
+        button{background:#2563eb;color:white;border:none;padding:10px 24px;border-radius:40px;cursor:pointer;font-weight:600;}
+        .results-count{margin:20px 0;font-weight:600;}
+        .bourse-card{background:white;border-radius:24px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:0.2s;}
+        .bourse-card:hover{transform:translateY(-3px);box-shadow:0 12px 20px rgba(0,0,0,0.08);}
+        .bourse-title{font-size:1.3rem;font-weight:700;color:#1e3a8a;}
+        .bourse-meta{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap;}
+        .badge{background:#e0f2fe;color:#0369a1;padding:4px 12px;border-radius:40px;font-size:0.75rem;}
+        .deadline{color:#b91c1c;font-weight:600;}
+        .bourse-desc{color:#4b5563;margin:12px 0;}
+        .btn-link{background:#2563eb;color:white;padding:8px 20px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.85rem;}
+        footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
+        @media (max-width:768px){.navbar{flex-direction:column;}.filters{flex-direction:column;}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo">RCEB - Bourses & Assistance documentaire</div>
+        <div class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="bourses-avancees.html">Bourses</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <h1 style="margin:30px 0 10px;">🎓 Bourses actives (mises à jour quotidiennes)</h1>
+
+    <div class="filters">
+        <div class="filter-group">
+            <label>🔍 Recherche</label>
+            <input type="text" id="search" placeholder="Titre, pays...">
+        </div>
+        <div class="filter-group">
+            <label>🌍 Pays</label>
+            <select id="paysFilter"><option value="">Tous</option></select>
+        </div>
+        <div class="filter-group">
+            <label>📚 Niveau</label>
+            <select id="niveauFilter"><option value="">Tous</option></select>
+        </div>
+        <div class="filter-group">
+            <label>📅 Tri</label>
+            <select id="tri"><option value="deadline">Date limite (proche → lointaine)</option><option value="titre">Titre A-Z</option></select>
+        </div>
+        <button id="applyFilters">Appliquer</button>
+    </div>
+
+    <div class="results-count" id="count"></div>
+    <div id="boursesList"></div>
+
+    <footer>© RCEB - Base de données mise à jour manuellement par notre équipe.</footer>
+</div>
+
+<script>
+    // ⚙️ BASE ID (déjà rempli)
+    const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";
+    // ⚠️ REMPLACE TON_TOKEN_API par ton vrai token (commence par pat...)
+    const AIRTABLE_API_KEY = "TON_TOKEN_API";
+
+    let allRecords = [];
+
+    async function fetchBourses() {
+        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Bourses?maxRecords=1000`;
+        const response = await fetch(url, {
+            headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+        });
+        const data = await response.json();
+        allRecords = data.records.map(record => ({
+            id: record.id,
+            titre: record.fields.Titre || "Sans titre",
+            pays: record.fields.Pays || "",
+            niveau: record.fields.Niveau || "",
+            deadline: record.fields["Date limite"] || "",
+            description: record.fields.Description || "",
+            lien: record.fields["Lien officiel"] || ""
+        }));
+        populateFilters();
+        displayBourses();
+    }
+
+    function populateFilters() {
+        const paysSet = new Set();
+        const niveauSet = new Set();
+        allRecords.forEach(b => {
+            if(b.pays) paysSet.add(b.pays);
+            if(b.niveau) niveauSet.add(b.niveau);
+        });
+        const paysSelect = document.getElementById('paysFilter');
+        paysSelect.innerHTML = '<option value="">Tous</option>';
+        Array.from(paysSet).sort().forEach(p => { paysSelect.innerHTML += `<option value="${p}">${p}</option>`; });
+        const niveauSelect = document.getElementById('niveauFilter');
+        niveauSelect.innerHTML = '<option value="">Tous</option>';
+        Array.from(niveauSet).sort().forEach(n => { niveauSelect.innerHTML += `<option value="${n}">${n}</option>`; });
+    }
+
+    function displayBourses() {
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        const paysVal = document.getElementById('paysFilter').value;
+        const niveauVal = document.getElementById('niveauFilter').value;
+        let filtered = allRecords.filter(b => {
+            if(paysVal && b.pays !== paysVal) return false;
+            if(niveauVal && b.niveau !== niveauVal) return false;
+            if(searchTerm && !b.titre.toLowerCase().includes(searchTerm) && !b.pays.toLowerCase().includes(searchTerm)) return false;
+            return true;
+        });
+        const tri = document.getElementById('tri').value;
+        if(tri === 'deadline') {
+            filtered.sort((a,b) => (a.deadline || '9999') > (b.deadline || '9999') ? 1 : -1);
+        } else {
+            filtered.sort((a,b) => a.titre.localeCompare(b.titre));
+        }
+        document.getElementById('count').innerHTML = `${filtered.length} bourse(s) trouvée(s)`;
+        const container = document.getElementById('boursesList');
+        if(filtered.length === 0) { container.innerHTML = '<p>Aucune bourse ne correspond.</p>'; return; }
+        container.innerHTML = filtered.map(b => `
+            <div class="bourse-card">
+                <div class="bourse-title">${b.titre}</div>
+                <div class="bourse-meta">
+                    ${b.pays ? `<span class="badge">🌍 ${b.pays}</span>` : ''}
+                    ${b.niveau ? `<span class="badge">📚 ${b.niveau}</span>` : ''}
+                    ${b.deadline ? `<span class="badge deadline">⏰ ${new Date(b.deadline).toLocaleDateString()}</span>` : ''}
+                </div>
+                <div class="bourse-desc">${b.description}</div>
+                ${b.lien ? `<a href="${b.lien}" target="_blank" class="btn-link">Voir l'offre officielle →</a>` : ''}
+            </div>
+        `).join('');
+    }
+
+    document.getElementById('applyFilters').addEventListener('click', displayBourses);
+    document.getElementById('search').addEventListener('keyup', displayBourses);
+    fetchBourses();
+</script>
+</body>
+</html>
