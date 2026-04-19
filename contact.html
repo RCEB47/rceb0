@@ -47,6 +47,7 @@
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
             <a href="bourses.html">Bourses</a>
+            <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
@@ -106,23 +107,17 @@
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
         
-        // Simule l'envoi (pour un vrai envoi, il faudrait un serveur)
-        // Ici, on ouvre WhatsApp avec le message pré-rempli
         const waMessage = `Bonjour RCEB, je suis ${name} (${email}). Message : ${message}`;
         const waUrl = `https://wa.me/22899326964?text=${encodeURIComponent(waMessage)}`;
         
-        // Affiche le message de succès
         document.getElementById('formSuccess').style.display = 'block';
         
-        // Ouvre WhatsApp après 1 seconde
         setTimeout(() => {
             window.open(waUrl, '_blank');
         }, 1000);
         
-        // Réinitialise le formulaire
         document.getElementById('contactForm').reset();
         
-        // Cache le message après 5 secondes
         setTimeout(() => {
             document.getElementById('formSuccess').style.display = 'none';
         }, 5000);
