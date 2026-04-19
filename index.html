@@ -5,49 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Balises -->
-    <meta name="description" content="RCEB : Accédez aux meilleures bourses internationales et aux guides PDF pour réussir votre candidature. Accompagnement expert au Togo.">
-    <meta name="keywords" content="bourses internationales, guides PDF, CV bourse, lettre de motivation, accompagnement bourse, Togo, RCEB">
+    <meta name="description" content="Contactez RCEB pour vos questions sur les bourses internationales et l'accompagnement documentaire. Paiement Moov Money, TMoney, Ecobank.">
+    <meta name="keywords" content="contact RCEB, bourses Togo, assistance documentaire, WhatsApp, Moov Money, TMoney">
     <meta name="author" content="RCEB">
     <meta name="robots" content="index, follow">
     
-    <title>RCEB - Bourses & Assistance documentaire</title>
+    <title>Contact - RCEB</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Inter',sans-serif;background:#f9fafb;color:#111827;}
-        .container{max-width:1200px;margin:0 auto;padding:0 24px;}
-        .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;box-shadow:0 4px 12px rgba(0,0,0,0.03);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;}
+        .container{max-width:800px;margin:0 auto;padding:0 24px;}
+        .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
         .logo{font-weight:700;font-size:1.4rem;color:#2563eb;}
         .nav-links{display:flex;gap:24px;}
         .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
         .nav-links a:hover{color:#2563eb;}
-        .btn{display:inline-block;padding:12px 28px;border-radius:40px;font-weight:600;text-decoration:none;transition:0.2s;}
-        .btn-primary{background:#2563eb;color:white;box-shadow:0 2px 6px rgba(37,99,235,0.2);}
-        .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
-        .btn-outline{background:white;color:#2563eb;border:1px solid #2563eb;}
-        .btn-outline:hover{background:#eff6ff;}
-        .hero{text-align:center;padding:60px 0 40px;}
-        .hero h1{font-size:3rem;font-weight:700;background:linear-gradient(135deg,#1e3a8a,#2563eb);background-clip:text;-webkit-background-clip:text;color:transparent;margin-bottom:20px;}
-        .hero p{font-size:1.2rem;color:#4b5563;max-width:700px;margin:0 auto 32px;}
-        .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
-        .features{display:flex;gap:32px;margin:60px 0;flex-wrap:wrap;justify-content:center;}
-        .card{background:white;border-radius:24px;padding:28px;box-shadow:0 8px 20px rgba(0,0,0,0.05);flex:1;min-width:200px;text-align:center;transition:transform 0.2s;}
-        .card:hover{transform:translateY(-5px);}
-        .card h3{font-size:1.5rem;color:#2563eb;margin-bottom:12px;}
-        .whatsapp{background:#25d366;color:white;padding:12px;border-radius:60px;text-align:center;margin:40px 0;}
+        .contact-card{background:white;border-radius:32px;padding:32px;margin:40px 0;box-shadow:0 20px 35px rgba(0,0,0,0.05);}
+        .payment-method{background:#f3f4f6;border-radius:20px;padding:16px;margin:16px 0;display:flex;justify-content:space-between;font-weight:600;}
+        .btn-wa{background:#25d366;color:white;padding:12px 24px;border-radius:60px;text-decoration:none;display:inline-block;margin:20px 0;font-weight:600;}
+        .btn-wa:hover{background:#128C7E;}
         .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;font-size:0.85rem;color:#1f2937;}
+        
+        /* Formulaire de contact */
+        .form-group{margin-bottom:20px;}
+        .form-group label{display:block;font-weight:600;margin-bottom:8px;}
+        .form-group input,.form-group textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #d1d5db;font-family:inherit;}
+        .form-group textarea{min-height:100px;}
+        .btn-submit{background:#2563eb;color:white;border:none;padding:12px 24px;border-radius:40px;cursor:pointer;font-weight:600;}
+        .btn-submit:hover{background:#1d4ed8;}
+        .message-success{background:#d1fae5;color:#065f46;padding:12px;border-radius:12px;margin-bottom:20px;display:none;}
         footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
-        @media (max-width:768px){.navbar{flex-direction:column;}.hero h1{font-size:2rem;}}
+        @media (max-width:768px){.navbar{flex-direction:column;}}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
-        <div class="logo">RCEB - Bourses & Assistance documentaire</div>
+        <div class="logo">RCEB</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
             <a href="bourses.html">Bourses</a>
+            <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
@@ -57,36 +57,71 @@
         <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
     </div>
 
-    <div class="hero">
-        <h1>Réalisez vos ambitions académiques avec RCEB</h1>
-        <p>Accédez aux meilleures bourses internationales et bénéficiez d’un accompagnement expert pour construire votre avenir</p>
-        <div class="hero-buttons">
-            <a href="bourses.html" class="btn btn-primary">🎓 JE VEUX UNE BOURSE</a>
-            <a href="boutique.html" class="btn btn-outline">📚 JE VEUX RÉUSSIR PAR MOI-MÊME</a>
-        </div>
+    <div class="contact-card">
+        <h2>📞 Contact WhatsApp</h2>
+        <p style="margin:20px 0;">Notre ligne directe : <strong>+228 99326964</strong></p>
+        <a href="https://wa.me/22899326964" class="btn-wa">Envoyer un message sur WhatsApp</a>
+        
+        <h3 style="margin:30px 0 20px;">📝 Formulaire de contact</h3>
+        <div id="formSuccess" class="message-success">✅ Message envoyé ! Je vous réponds sous 24h.</div>
+        <form id="contactForm">
+            <div class="form-group">
+                <label>Nom complet</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Envoyer le message</button>
+        </form>
+        
+        <h3 style="margin:30px 0 20px;">💳 Moyens de paiement</h3>
+        <div class="payment-method"><span>Moov Money</span><span>+228 99 32 69 64</span></div>
+        <div class="payment-method"><span>TMoney</span><span>+228 72 22 92 76</span></div>
+        <div class="payment-method"><span>Ecobank</span><span>Compte sur demande</span></div>
+        <p style="margin-top:30px;">📌 Après paiement, vous recevez votre guide PDF immédiatement.</p>
     </div>
     
-    <div class="features">
-        <div class="card"><h3>🌍 Bourses 100% financées</h3><p>Universités publiques, gouvernements et fondations internationales.</p></div>
-        <div class="card"><h3>🎯 Accompagnement Expert</h3><p>De la recherche de bourse à la constitution du dossier.</p></div>
-        <div class="card"><h3>📈 Taux de réussite 85%+</h3><p>Nos candidats décrochent une bourse ou un visa.</p></div>
-    </div>
-    
-    <div class="whatsapp">📞 Contact direct : +228 99326964 (WhatsApp)</div>
-    
-    <footer>© 2025 RCEB - Togo. Tous droits réservés.</footer>
+    <footer>© RCEB - Assistance 7j/7</footer>
 </div>
 
-<!-- Script pour le compteur de visites (stockage local) -->
+<!-- Script compteur de visites -->
 <script>
     let count = localStorage.getItem('visitCountRCEB');
-    if (count === null) {
-        count = 1;
-    } else {
-        count = Number(count) + 1;
-    }
+    if (count === null) { count = 1; } 
+    else { count = Number(count) + 1; }
     localStorage.setItem('visitCountRCEB', count);
     document.getElementById('visitCount').innerText = count;
+</script>
+
+<!-- Script formulaire de contact (simulation envoi) -->
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        const waMessage = `Bonjour RCEB, je suis ${name} (${email}). Message : ${message}`;
+        const waUrl = `https://wa.me/22899326964?text=${encodeURIComponent(waMessage)}`;
+        
+        document.getElementById('formSuccess').style.display = 'block';
+        
+        setTimeout(() => {
+            window.open(waUrl, '_blank');
+        }, 1000);
+        
+        document.getElementById('contactForm').reset();
+        
+        setTimeout(() => {
+            document.getElementById('formSuccess').style.display = 'none';
+        }, 5000);
+    });
 </script>
 </body>
 </html>
