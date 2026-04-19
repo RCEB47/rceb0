@@ -5,45 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Balises -->
-    <meta name="description" content="Achetez nos guides PDF pour réussir vos candidatures de bourses : Matrice des bourses invisibles, CV OTAN, lettre de motivation, pack complet et plus. Paiement Moov Money, TMoney.">
-    <meta name="keywords" content="guides PDF bourses, CV bourse, lettre de motivation bourse, pack bourse, RCEB Togo">
+    <meta name="description" content="Découvrez plus de 300 bourses internationales actualisées : Turquie, France, Chine, Allemagne, Canada, etc. Filtres par pays, niveau et recherche. Mise à jour quotidienne.">
+    <meta name="keywords" content="bourses internationales, bourse Turquie, bourse Erasmus, bourse France, bourse Canada, bourse Chine, RCEB Togo">
     <meta name="author" content="RCEB">
     <meta name="robots" content="index, follow">
     
-    <title>Boutique - RCEB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Bourses internationales - RCEB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Inter',sans-serif;background:#f9fafb;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;padding-bottom:40px;}
         .container{max-width:1200px;margin:0 auto;padding:0 24px;}
         .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
         .logo{font-weight:700;font-size:1.4rem;color:#2563eb;}
         .nav-links{display:flex;gap:24px;}
         .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
         .nav-links a:hover{color:#2563eb;}
-        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;margin:40px 0;}
-        .product-card{background:white;border-radius:24px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,0.05);transition:transform 0.2s;}
-        .product-card:hover{transform:translateY(-5px);}
-        .product-title{font-size:1.25rem;font-weight:700;color:#1e3a8a;}
-        .product-desc{color:#4b5563;margin:12px 0;font-size:0.9rem;}
-        .product-price{font-size:1.6rem;font-weight:800;color:#2563eb;margin:16px 0;}
-        .whatsapp-btn{background:#25d366;color:white;padding:12px;border-radius:40px;text-decoration:none;display:inline-block;width:100%;text-align:center;font-weight:600;transition:background 0.2s;}
-        .whatsapp-btn:hover{background:#128C7E;}
-        .badge{background:#fef3c7;color:#b45309;padding:4px 10px;border-radius:40px;font-size:0.7rem;display:inline-block;margin-bottom:8px;}
+        .filters{background:white;border-radius:24px;padding:24px;margin:20px 0;display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;}
+        .filter-group{display:flex;flex-direction:column;gap:6px;}
+        .filter-group label{font-weight:600;font-size:0.8rem;}
+        input,select{padding:10px 16px;border-radius:40px;border:1px solid #d1d5db;font-family:inherit;}
+        button{background:#2563eb;color:white;border:none;padding:10px 24px;border-radius:40px;cursor:pointer;font-weight:600;}
+        button:hover{background:#1d4ed8;}
+        .results-count{margin:20px 0;font-weight:600;}
+        .bourse-card{background:white;border-radius:24px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:0.2s;}
+        .bourse-card:hover{transform:translateY(-3px);box-shadow:0 12px 20px rgba(0,0,0,0.08);}
+        .bourse-title{font-size:1.3rem;font-weight:700;color:#1e3a8a;}
+        .bourse-meta{display:flex;gap:12px;margin:12px 0;flex-wrap:wrap;}
+        .badge{background:#e0f2fe;color:#0369a1;padding:4px 12px;border-radius:40px;font-size:0.75rem;}
+        .deadline{color:#b91c1c;font-weight:600;}
+        .bourse-desc{color:#4b5563;margin:12px 0;}
+        .btn-link{background:#2563eb;color:white;padding:8px 20px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.85rem;}
+        .btn-link:hover{background:#1d4ed8;}
         .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;font-size:0.85rem;color:#1f2937;}
+        .shop-promo{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;border-radius:60px;padding:12px 24px;text-align:center;margin:20px 0;display:inline-block;width:auto;}
+        .shop-promo a{color:white;text-decoration:none;font-weight:600;}
         footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
-        @media (max-width:768px){.navbar{flex-direction:column;}}
+        @media (max-width:768px){.navbar{flex-direction:column;}.filters{flex-direction:column;}}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
-        <div class="logo">RCEB</div>
+        <div class="logo">RCEB - Bourses & Assistance documentaire</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
             <a href="bourses.html">Bourses</a>
-            <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
@@ -52,43 +60,152 @@
     <div style="text-align: center; margin-top: 10px;">
         <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
     </div>
-
-    <h1 style="margin:30px 0 10px;">📘 Nos guides PDF</h1>
-    <p style="color:#4b5563; margin-bottom:20px;">Cliquez sur "Acheter" pour être redirigé vers WhatsApp avec le message pré-rempli.</p>
     
-    <div class="products-grid">
-        <!-- 1 -->
-        <div class="product-card"><div class="badge">⭐ Best seller</div><div class="product-title">Matrice des Bourses Invisibles</div><div class="product-desc">70% des financements cachés. Fondations privées, contacts directs.</div><div class="product-price">5 000 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20la%20%22Matrice%20des%20Bourses%20Invisibles%22%20au%20prix%20de%205000%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 2 -->
-        <div class="product-card"><div class="badge">📄 PDF</div><div class="product-title">CV Format OTAN (Europe/USA)</div><div class="product-desc">Optimisé pour les robots de tri. Sans photo, sans fioritures.</div><div class="product-price">3 000 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20le%20%22CV%20Format%20OTAN%22%20au%20prix%20de%203000%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 3 -->
-        <div class="product-card"><div class="badge">📝 15 templates</div><div class="product-title">La Bible de la Lettre de Motivation</div><div class="product-desc">15 templates prêts à l'emploi. Méthode "Future Alumni".</div><div class="product-price">3 000 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20%22La%20Bible%20de%20la%20Lettre%20de%20Motivation%22%20au%20prix%20de%203000%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 4 -->
-        <div class="product-card"><div class="badge">🎤 Entretien</div><div class="product-title">Kit d'Entretien STAR Method</div><div class="product-desc">40 questions réelles et scripts de réponse pour ne jamais être pris au dépourvu.</div><div class="product-price">4 000 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20le%20%22Kit%20d'Entretien%20STAR%22%20au%20prix%20de%204000%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 5 -->
-        <div class="product-card"><div class="badge">📱 Mobile</div><div class="product-title">Numérisation : Le Dossier Parfait</div><div class="product-desc">Comment compresser un dossier de 45 Mo à 2 Mo avec son téléphone.</div><div class="product-price">1 500 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20%22Numérisation%20Le%20Dossier%20Parfait%22%20au%20prix%20de%201500%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 6 -->
-        <div class="product-card"><div class="badge">💰 Finance</div><div class="product-title">Check-List des Fonds de Garantie</div><div class="product-desc">Solutions pour débloquer le Sperrkonto et trouver des prêts à taux zéro.</div><div class="product-price">3 500 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20la%20%22Check-List%20des%20Fonds%20de%20Garantie%22%20au%20prix%20de%203500%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 7 -->
-        <div class="product-card"><div class="badge">🌍 Destination</div><div class="product-title">Pack Destination (Allemagne/Canada)</div><div class="product-desc">Guide complet pays par pays (deadlines, contacts, astuces locales).</div><div class="product-price">6 000 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20le%20%22Pack%20Destination%22%20au%20prix%20de%206000%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 8 -->
-        <div class="product-card"><div class="badge">📅 Agenda</div><div class="product-title">L'Agenda du Candidat Stratégique</div><div class="product-desc">Tableau Excel/Notion avec alertes de deadlines.</div><div class="product-price">2 500 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20%22L'Agenda%20du%20Candidat%20Stratégique%22%20au%20prix%20de%202500%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 9 -->
-        <div class="product-card"><div class="badge">✍️ Recommandation</div><div class="product-title">Modèle de Recommandation Express</div><div class="product-desc">Le brouillon à donner à votre professeur pour qu'il signe sans effort.</div><div class="product-price">2 000 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20le%20%22Modèle%20de%20Recommandation%20Express%22%20au%20prix%20de%202000%20FCFA.">Acheter sur WhatsApp</a></div>
-        <!-- 10 -->
-        <div class="product-card"><div class="badge">🎁 OFFRE SPÉCIALE</div><div class="product-title">LE PACK BLACK EDITION (Bundle)</div><div class="product-desc">Les 9 guides + Bonus Live (Base de données mise à jour 2027) + Relecture CV.</div><div class="product-price">19 900 FCFA</div><a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20acheter%20le%20%22PACK%20BLACK%20EDITION%22%20au%20prix%20de%2019900%20FCFA.">Acheter sur WhatsApp</a></div>
+    <!-- Bannière promotionnelle vers la boutique -->
+    <div style="text-align: center;">
+        <div class="shop-promo">
+            📚 <a href="boutique.html">🔥 Vous cherchez des guides PDF pour réussir vos candidatures ? Cliquez ici !</a> 📚
+        </div>
     </div>
-    
-    <footer>© RCEB - Paiement : Moov Money 99326964 / TMoney 72229276 / Ecobank</footer>
+
+    <h1 style="margin:30px 0 10px;">🎓 Bourses actives (mise à jour quotidienne)</h1>
+
+    <div class="filters">
+        <div class="filter-group">
+            <label>🔍 Recherche</label>
+            <input type="text" id="search" placeholder="Titre, pays...">
+        </div>
+        <div class="filter-group">
+            <label>🌍 Pays</label>
+            <select id="paysFilter"><option value="">Tous</option></select>
+        </div>
+        <div class="filter-group">
+            <label>📚 Niveau</label>
+            <select id="niveauFilter"><option value="">Tous</option></select>
+        </div>
+        <div class="filter-group">
+            <label>📅 Tri</label>
+            <select id="tri">
+                <option value="deadline">Date limite (proche → lointaine)</option>
+                <option value="titre">Titre A-Z</option>
+            </select>
+        </div>
+        <button id="applyFilters">Appliquer</button>
+    </div>
+
+    <div class="results-count" id="count"></div>
+    <div id="boursesList"></div>
+
+    <footer>© RCEB - Base de données alimentée par Airtable. Plus de 300 bourses référencées.</footer>
 </div>
 
-<!-- Script compteur de visites -->
 <script>
+    // ==================== TES IDENTIFIANTS AIRTABLE ====================
+    const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";
+    const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5";
+    // ===================================================================
+
+    let allRecords = [];
+
+    async function fetchBourses() {
+        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Bourses?maxRecords=1000`;
+        try {
+            const response = await fetch(url, {
+                headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` }
+            });
+            if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+            const data = await response.json();
+            allRecords = data.records.map(record => ({
+                titre: record.fields.Titre || "Sans titre",
+                pays: record.fields.Pays || "",
+                niveau: record.fields.Niveau || "",
+                deadline: record.fields["Date limite"] || "",
+                description: record.fields.Description || "",
+                lien: record.fields["Lien officiel"] || ""
+            }));
+            populateFilters();
+            displayBourses();
+        } catch (err) {
+            document.getElementById('boursesList').innerHTML = `<p style="color:red;">❌ Erreur : ${err.message}. Vérifiez Base ID et token.</p>`;
+        }
+    }
+
+    function populateFilters() {
+        const paysSet = new Set();
+        const niveauSet = new Set();
+        allRecords.forEach(b => {
+            if(b.pays) paysSet.add(b.pays);
+            if(b.niveau) niveauSet.add(b.niveau);
+        });
+        const paysSelect = document.getElementById('paysFilter');
+        paysSelect.innerHTML = '<option value="">Tous</option>';
+        Array.from(paysSet).sort().forEach(p => { paysSelect.innerHTML += `<option value="${p}">${p}</option>`; });
+        const niveauSelect = document.getElementById('niveauFilter');
+        niveauSelect.innerHTML = '<option value="">Tous</option>';
+        Array.from(niveauSet).sort().forEach(n => { niveauSelect.innerHTML += `<option value="${n}">${n}</option>`; });
+    }
+
+    function displayBourses() {
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        const paysVal = document.getElementById('paysFilter').value;
+        const niveauVal = document.getElementById('niveauFilter').value;
+        let filtered = allRecords.filter(b => {
+            if(paysVal && b.pays !== paysVal) return false;
+            if(niveauVal && b.niveau !== niveauVal) return false;
+            if(searchTerm && !b.titre.toLowerCase().includes(searchTerm) && !b.pays.toLowerCase().includes(searchTerm)) return false;
+            return true;
+        });
+        const tri = document.getElementById('tri').value;
+        if(tri === 'deadline') {
+            filtered.sort((a,b) => (a.deadline || '9999') > (b.deadline || '9999') ? 1 : -1);
+        } else {
+            filtered.sort((a,b) => a.titre.localeCompare(b.titre));
+        }
+        document.getElementById('count').innerHTML = `${filtered.length} bourse(s) trouvée(s)`;
+        const container = document.getElementById('boursesList');
+        if(filtered.length === 0) { container.innerHTML = '<p>Aucune bourse ne correspond.</p>'; return; }
+        container.innerHTML = filtered.map(b => `
+            <div class="bourse-card">
+                <div class="bourse-title">${escapeHtml(b.titre)}</div>
+                <div class="bourse-meta">
+                    ${b.pays ? `<span class="badge">🌍 ${escapeHtml(b.pays)}</span>` : ''}
+                    ${b.niveau ? `<span class="badge">📚 ${escapeHtml(b.niveau)}</span>` : ''}
+                    ${b.deadline ? `<span class="badge deadline">⏰ ${formatDate(b.deadline)}</span>` : ''}
+                </div>
+                <div class="bourse-desc">${escapeHtml(b.description)}</div>
+                ${b.lien ? `<a href="${escapeHtml(b.lien)}" target="_blank" class="btn-link">Voir l'offre officielle →</a>` : ''}
+            </div>
+        `).join('');
+    }
+
+    function formatDate(dateString) {
+        if (!dateString) return '';
+        try {
+            return new Date(dateString).toLocaleDateString('fr-FR');
+        } catch(e) { return dateString; }
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Compteur de visites
     let count = localStorage.getItem('visitCountRCEB');
     if (count === null) { count = 1; } 
     else { count = Number(count) + 1; }
     localStorage.setItem('visitCountRCEB', count);
     document.getElementById('visitCount').innerText = count;
+
+    document.getElementById('applyFilters').addEventListener('click', displayBourses);
+    document.getElementById('search').addEventListener('keyup', displayBourses);
+    document.getElementById('tri').addEventListener('change', displayBourses);
+    fetchBourses();
 </script>
 </body>
 </html>
