@@ -1,4 +1,132 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact - RCEB</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Inter',sans-serif;background:#f9fafb;}.container{max-width:800px;margin:0 auto;padding:0 24px;}.navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}.logo{font-weight:700;font-size:1.4rem;color:#2563eb;}.nav-links{display:flex;gap:24px;}.nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}.contact-card{background:white;border-radius:32px;padding:32px;margin:40px 0;box-shadow:0 20px 35px rgba(0,0,0,0.05);}.payment-method{background:#f3f4f6;border-radius:20px;padding:16px;margin:16px 0;display:flex;justify-content:space-between;font-weight:600;}.btn-wa{background:#25d366;color:white;padding:12px 24px;border-radius:60px;text-decoration:none;display:inline-block;margin:20px 0;font-weight:600;}footer{text-align:center;padding:32px;color:#6b7280;}@media (max-width:768px){.navbar{flex-direction:column;}}</style></head>
-<body><div class="container"><div class="navbar"><div class="logo">RCEB</div><div class="nav-links"><a href="index.html">Accueil</a><a href="boutique.html">Boutique</a><a href="bourses.html">Bourses</a><a href="contact.html">Contact</a></div></div><div class="contact-card"><h2>📞 Contact WhatsApp</h2><p style="margin:20px 0;">Notre ligne directe : <strong>+228 99326964</strong></p><a href="https://wa.me/22899326964" class="btn-wa">Envoyer un message</a><h3 style="margin:30px 0 20px;">💳 Moyens de paiement</h3><div class="payment-method"><span>Moov Money</span><span>+228 99 32 69 64</span></div><div class="payment-method"><span>TMoney</span><span>+228 72 22 92 76</span></div><div class="payment-method"><span>Ecobank</span><span>Compte sur demande</span></div><p style="margin-top:30px;">📌 Après paiement, vous recevez votre guide PDF immédiatement.</p></div><footer>© RCEB - Assistance 7j/7</footer></div></body></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Balises -->
+    <meta name="description" content="Contactez RCEB pour vos questions sur les bourses internationales et l'accompagnement documentaire. Paiement Moov Money, TMoney, Ecobank.">
+    <meta name="keywords" content="contact RCEB, bourses Togo, assistance documentaire, WhatsApp, Moov Money, TMoney">
+    <meta name="author" content="RCEB">
+    <meta name="robots" content="index, follow">
+    
+    <title>Contact - RCEB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;}
+        .container{max-width:800px;margin:0 auto;padding:0 24px;}
+        .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-weight:700;font-size:1.4rem;color:#2563eb;}
+        .nav-links{display:flex;gap:24px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
+        .nav-links a:hover{color:#2563eb;}
+        .contact-card{background:white;border-radius:32px;padding:32px;margin:40px 0;box-shadow:0 20px 35px rgba(0,0,0,0.05);}
+        .payment-method{background:#f3f4f6;border-radius:20px;padding:16px;margin:16px 0;display:flex;justify-content:space-between;font-weight:600;}
+        .btn-wa{background:#25d366;color:white;padding:12px 24px;border-radius:60px;text-decoration:none;display:inline-block;margin:20px 0;font-weight:600;}
+        .btn-wa:hover{background:#128C7E;}
+        .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;font-size:0.85rem;color:#1f2937;}
+        
+        /* Formulaire de contact */
+        .form-group{margin-bottom:20px;}
+        .form-group label{display:block;font-weight:600;margin-bottom:8px;}
+        .form-group input,.form-group textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #d1d5db;font-family:inherit;}
+        .form-group textarea{min-height:100px;}
+        .btn-submit{background:#2563eb;color:white;border:none;padding:12px 24px;border-radius:40px;cursor:pointer;font-weight:600;}
+        .btn-submit:hover{background:#1d4ed8;}
+        .message-success{background:#d1fae5;color:#065f46;padding:12px;border-radius:12px;margin-bottom:20px;display:none;}
+        footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
+        @media (max-width:768px){.navbar{flex-direction:column;}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo">RCEB</div>
+        <div class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="bourses.html">Bourses</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    
+    <!-- Compteur de visites -->
+    <div style="text-align: center; margin-top: 10px;">
+        <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
+    </div>
+
+    <div class="contact-card">
+        <h2>📞 Contact WhatsApp</h2>
+        <p style="margin:20px 0;">Notre ligne directe : <strong>+228 99326964</strong></p>
+        <a href="https://wa.me/22899326964" class="btn-wa">Envoyer un message sur WhatsApp</a>
+        
+        <h3 style="margin:30px 0 20px;">📝 Formulaire de contact</h3>
+        <div id="formSuccess" class="message-success">✅ Message envoyé ! Je vous réponds sous 24h.</div>
+        <form id="contactForm">
+            <div class="form-group">
+                <label>Nom complet</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Envoyer le message</button>
+        </form>
+        
+        <h3 style="margin:30px 0 20px;">💳 Moyens de paiement</h3>
+        <div class="payment-method"><span>Moov Money</span><span>+228 99 32 69 64</span></div>
+        <div class="payment-method"><span>TMoney</span><span>+228 72 22 92 76</span></div>
+        <div class="payment-method"><span>Ecobank</span><span>Compte sur demande</span></div>
+        <p style="margin-top:30px;">📌 Après paiement, vous recevez votre guide PDF immédiatement.</p>
+    </div>
+    
+    <footer>© RCEB - Assistance 7j/7</footer>
+</div>
+
+<!-- Script compteur de visites -->
+<script>
+    let count = localStorage.getItem('visitCountRCEB');
+    if (count === null) { count = 1; } 
+    else { count = Number(count) + 1; }
+    localStorage.setItem('visitCountRCEB', count);
+    document.getElementById('visitCount').innerText = count;
+</script>
+
+<!-- Script formulaire de contact (simulation envoi) -->
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Simule l'envoi (pour un vrai envoi, il faudrait un serveur)
+        // Ici, on ouvre WhatsApp avec le message pré-rempli
+        const waMessage = `Bonjour RCEB, je suis ${name} (${email}). Message : ${message}`;
+        const waUrl = `https://wa.me/22899326964?text=${encodeURIComponent(waMessage)}`;
+        
+        // Affiche le message de succès
+        document.getElementById('formSuccess').style.display = 'block';
+        
+        // Ouvre WhatsApp après 1 seconde
+        setTimeout(() => {
+            window.open(waUrl, '_blank');
+        }, 1000);
+        
+        // Réinitialise le formulaire
+        document.getElementById('contactForm').reset();
+        
+        // Cache le message après 5 secondes
+        setTimeout(() => {
+            document.getElementById('formSuccess').style.display = 'none';
+        }, 5000);
+    });
+</script>
+</body>
+</html>
