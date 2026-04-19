@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Balises -->
     <meta name="description" content="Blog RCEB : conseils pour décrocher une bourse, astuces CV et lettre de motivation, actualités des bourses internationales.">
-    <meta name="keywords" content="blog bourses, conseils bourse, astuces CV, lettre de motivation, RCEB">
-    <meta name="author" content="RCEB">
-    <meta name="robots" content="index, follow">
-    
     <title>Blog - RCEB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Inter',sans-serif;background:#f9fafb;padding-bottom:40px;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;}
         .container{max-width:1200px;margin:0 auto;padding:0 24px;}
         .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
         .logo{font-weight:700;font-size:1.4rem;color:#2563eb;}
         .nav-links{display:flex;gap:24px;}
         .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
-        .nav-links a:hover{color:#2563eb;}
-        .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;font-size:0.85rem;color:#1f2937;}
         .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;margin:40px 0;}
-        .blog-card{background:white;border-radius:24px;padding:24px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform 0.2s;}
+        .blog-card{background:white;border-radius:24px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform 0.2s;}
         .blog-card:hover{transform:translateY(-5px);}
-        .blog-date{font-size:0.75rem;color:#6b7280;margin-bottom:12px;}
+        .blog-img{width:100%;height:200px;object-fit:cover;}
+        .blog-content{padding:24px;}
+        .blog-date{font-size:0.75rem;color:#6b7280;margin-bottom:8px;}
         .blog-title{font-size:1.4rem;font-weight:700;color:#1e3a8a;margin-bottom:12px;}
-        .blog-excerpt{color:#4b5563;margin-bottom:20px;line-height:1.5;}
-        .read-more{background:#2563eb;color:white;padding:8px 20px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.85rem;font-weight:600;}
-        .read-more:hover{background:#1d4ed8;}
+        .blog-excerpt{color:#4b5563;margin-bottom:20px;}
+        .read-more{background:#2563eb;color:white;padding:8px 20px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.85rem;}
+        .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;}
+        .float-wa{position:fixed;bottom:30px;right:30px;background:#25d366;color:white;border-radius:60px;padding:12px 20px;text-decoration:none;display:flex;align-items:center;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;font-weight:600;}
         footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
         @media (max-width:768px){.navbar{flex-direction:column;}}
     </style>
@@ -37,7 +32,7 @@
 <body>
 <div class="container">
     <div class="navbar">
-        <div class="logo">RCEB - Bourses & Assistance documentaire</div>
+        <div class="logo">RCEB</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
@@ -46,73 +41,23 @@
             <a href="contact.html">Contact</a>
         </div>
     </div>
-    
-    <!-- Compteur de visites -->
-    <div style="text-align: center; margin-top: 10px;">
-        <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
-    </div>
-
+    <div style="text-align:center"><span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span></div>
     <h1 style="margin:30px 0 10px;">📝 Blog RCEB</h1>
-    <p style="color:#4b5563; margin-bottom:20px;">Conseils, astuces et actualités pour réussir vos candidatures de bourses.</p>
-
     <div class="blog-grid">
-        <!-- Article 1 -->
-        <div class="blog-card">
-            <div class="blog-date">📅 15 avril 2025</div>
-            <div class="blog-title">Comment trouver une bourse 100% financée ?</div>
-            <div class="blog-excerpt">Les bourses 100% financées existent, mais il faut savoir où chercher. Découvrez nos astuces pour repérer les opportunités cachées...</div>
-            <a href="article-bourse-financee.html" class="read-more">Lire la suite →</a>
-        </div>
-        
-        <!-- Article 2 -->
-        <div class="blog-card">
-            <div class="blog-date">📅 8 avril 2025</div>
-            <div class="blog-title">Les 5 erreurs à éviter dans votre lettre de motivation</div>
-            <div class="blog-excerpt">Votre lettre de motivation est souvent la clé de votre dossier. Évitez ces pièges qui font rejeter 80% des candidatures...</div>
-            <a href="article-lettre-motivation.html" class="read-more">Lire la suite →</a>
-        </div>
-        
-        <!-- Article 3 -->
-        <div class="blog-card">
-            <div class="blog-date">📅 1 avril 2025</div>
-            <div class="blog-title">CV bourse : le format qui plaît aux jurys</div>
-            <div class="blog-excerpt">Un CV trop long ou mal structuré peut nuire à votre dossier. Voici le modèle que nous recommandons pour maximiser vos chances...</div>
-            <a href="article-cv-bourse.html" class="read-more">Lire la suite →</a>
-        </div>
-        
-        <!-- Article 4 -->
-        <div class="blog-card">
-            <div class="blog-date">📅 25 mars 2025</div>
-            <div class="blog-title">Bourse Turquie 2026 : guide complet</div>
-            <div class="blog-excerpt">La bourse Türkiye Burslari est l'une des plus généreuses. Dates limites, documents, astuces : tout ce qu'il faut savoir...</div>
-            <a href="article-bourse-turquie.html" class="read-more">Lire la suite →</a>
-        </div>
-        
-        <!-- Article 5 -->
-        <div class="blog-card">
-            <div class="blog-date">📅 18 mars 2025</div>
-            <div class="blog-title">Témoignage : "Grâce à RCEB, j'ai décroché ma bourse"</div>
-            <div class="blog-excerpt">Rencontre avec Amara, qui a suivi notre accompagnement et a obtenu une bourse complète pour étudier au Canada...</div>
-            <a href="article-temoignage.html" class="read-more">Lire la suite →</a>
-        </div>
-        
-        <!-- Article 6 -->
-        <div class="blog-card">
-            <div class="blog-date">📅 10 mars 2025</div>
-            <div class="blog-title">Calendrier des bourses 2025-2026</div>
-            <div class="blog-excerpt">Ne manquez aucune date limite ! Téléchargez notre calendrier des principales bourses internationales...</div>
-            <a href="article-calendrier.html" class="read-more">Lire la suite →</a>
-        </div>
+        <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=Bourse+100%25" alt="article"><div class="blog-content"><div class="blog-date">📅 15 avril 2025</div><div class="blog-title">Comment trouver une bourse 100% financée ?</div><div class="blog-excerpt">Les bourses 100% financées existent, mais il faut savoir où chercher...</div><a href="article-bourse-financee.html" class="read-more">Lire la suite →</a></div></div>
+        <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=Lettre+Motivation" alt="article"><div class="blog-content"><div class="blog-date">📅 8 avril 2025</div><div class="blog-title">Les 5 erreurs à éviter dans votre lettre de motivation</div><div class="blog-excerpt">Votre lettre de motivation est souvent la clé de votre dossier...</div><a href="article-lettre-motivation.html" class="read-more">Lire la suite →</a></div></div>
+        <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=CV+Bourse" alt="article"><div class="blog-content"><div class="blog-date">📅 1 avril 2025</div><div class="blog-title">CV bourse : le format qui plaît aux jurys</div><div class="blog-excerpt">Un CV trop long ou mal structuré peut nuire à votre dossier...</div><a href="article-cv-bourse.html" class="read-more">Lire la suite →</a></div></div>
+        <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=Bourse+Turquie" alt="article"><div class="blog-content"><div class="blog-date">📅 25 mars 2025</div><div class="blog-title">Bourse Turquie 2026 : guide complet</div><div class="blog-excerpt">La bourse Türkiye Burslari est l'une des plus généreuses...</div><a href="article-bourse-turquie.html" class="read-more">Lire la suite →</a></div></div>
+        <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=T%C3%A9moignage" alt="article"><div class="blog-content"><div class="blog-date">📅 18 mars 2025</div><div class="blog-title">Témoignage : "Grâce à RCEB, j'ai décroché ma bourse"</div><div class="blog-excerpt">Rencontre avec Amara, qui a obtenu une bourse complète pour le Canada...</div><a href="article-temoignage.html" class="read-more">Lire la suite →</a></div></div>
+        <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=Calendrier" alt="article"><div class="blog-content"><div class="blog-date">📅 10 mars 2025</div><div class="blog-title">Calendrier des bourses 2025-2026</div><div class="blog-excerpt">Ne manquez aucune date limite ! Toutes les échéances importantes...</div><a href="article-calendrier.html" class="read-more">Lire la suite →</a></div></div>
     </div>
-
     <footer>© RCEB - Conseils et accompagnement pour vos bourses internationales.</footer>
 </div>
-
+<a href="https://wa.me/22899326964" class="float-wa" target="_blank">💬 Posez votre question</a>
 <script>
-    // Compteur de visites
     let count = localStorage.getItem('visitCountRCEB');
-    if (count === null) { count = 1; } 
-    else { count = Number(count) + 1; }
+    if (count === null) count = 1;
+    else count = Number(count) + 1;
     localStorage.setItem('visitCountRCEB', count);
     document.getElementById('visitCount').innerText = count;
 </script>
