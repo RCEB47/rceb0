@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Balises -->
+    <meta name="description" content="Découvrez plus de 300 bourses internationales actualisées : Turquie, France, Chine, Allemagne, Canada, etc. Filtres par pays, niveau et recherche. Mise à jour quotidienne.">
+    <meta name="keywords" content="bourses internationales, bourse Turquie, bourse Erasmus, bourse France, bourse Canada, bourse Chine, RCEB Togo">
+    <meta name="author" content="RCEB">
+    <meta name="robots" content="index, follow">
+    
     <title>Bourses internationales - RCEB</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -30,6 +37,9 @@
         .bourse-desc{color:#4b5563;margin:12px 0;}
         .btn-link{background:#2563eb;color:white;padding:8px 20px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.85rem;}
         .btn-link:hover{background:#1d4ed8;}
+        .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;font-size:0.85rem;color:#1f2937;}
+        .shop-promo{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;border-radius:60px;padding:12px 24px;text-align:center;margin:20px 0;display:inline-block;width:auto;}
+        .shop-promo a{color:white;text-decoration:none;font-weight:600;}
         footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
         @media (max-width:768px){.navbar{flex-direction:column;}.filters{flex-direction:column;}}
     </style>
@@ -41,8 +51,20 @@
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
-            <a href="bourses-avancees.html">Bourses</a>
+            <a href="bourses.html">Bourses</a>
             <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    
+    <!-- Compteur de visites -->
+    <div style="text-align: center; margin-top: 10px;">
+        <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
+    </div>
+    
+    <!-- Bannière promotionnelle vers la boutique -->
+    <div style="text-align: center;">
+        <div class="shop-promo">
+            📚 <a href="boutique.html">🔥 Vous cherchez des guides PDF pour réussir vos candidatures ? Cliquez ici !</a> 📚
         </div>
     </div>
 
@@ -74,14 +96,14 @@
     <div class="results-count" id="count"></div>
     <div id="boursesList"></div>
 
-    <footer>© RCEB - Base de données alimentée par Airtable.</footer>
+    <footer>© RCEB - Base de données alimentée par Airtable. Plus de 300 bourses référencées.</footer>
 </div>
 
 <script>
-    // ==================== À MODIFIER AVEC VOS IDENTIFIANTS ====================
-    const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";   // ← Remplace par ton vrai Base ID
-    const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5"; // ← Remplace par ton vrai token
-    // =========================================================================
+    // ==================== TES IDENTIFIANTS AIRTABLE ====================
+    const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";
+    const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5";
+    // ===================================================================
 
     let allRecords = [];
 
@@ -172,6 +194,13 @@
             return m;
         });
     }
+
+    // Compteur de visites
+    let count = localStorage.getItem('visitCountRCEB');
+    if (count === null) { count = 1; } 
+    else { count = Number(count) + 1; }
+    localStorage.setItem('visitCountRCEB', count);
+    document.getElementById('visitCount').innerText = count;
 
     document.getElementById('applyFilters').addEventListener('click', displayBourses);
     document.getElementById('search').addEventListener('keyup', displayBourses);
