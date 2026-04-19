@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Balises -->
+    <meta name="description" content="RCEB : Accédez aux meilleures bourses internationales et aux guides PDF pour réussir votre candidature. Accompagnement expert au Togo.">
+    <meta name="keywords" content="bourses internationales, guides PDF, CV bourse, lettre de motivation, accompagnement bourse, Togo, RCEB">
+    <meta name="author" content="RCEB">
+    <meta name="robots" content="index, follow">
+    
     <title>RCEB - Bourses & Assistance documentaire</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -28,6 +35,7 @@
         .card:hover{transform:translateY(-5px);}
         .card h3{font-size:1.5rem;color:#2563eb;margin-bottom:12px;}
         .whatsapp{background:#25d366;color:white;padding:12px;border-radius:60px;text-align:center;margin:40px 0;}
+        .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;font-size:0.85rem;color:#1f2937;}
         footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
         @media (max-width:768px){.navbar{flex-direction:column;}.hero h1{font-size:2rem;}}
     </style>
@@ -43,6 +51,12 @@
             <a href="contact.html">Contact</a>
         </div>
     </div>
+    
+    <!-- Compteur de visites -->
+    <div style="text-align: center; margin-top: 10px;">
+        <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
+    </div>
+
     <div class="hero">
         <h1>Réalisez vos ambitions académiques avec RCEB</h1>
         <p>Accédez aux meilleures bourses internationales et bénéficiez d’un accompagnement expert pour construire votre avenir</p>
@@ -51,13 +65,28 @@
             <a href="boutique.html" class="btn btn-outline">📚 JE VEUX RÉUSSIR PAR MOI-MÊME</a>
         </div>
     </div>
+    
     <div class="features">
         <div class="card"><h3>🌍 Bourses 100% financées</h3><p>Universités publiques, gouvernements et fondations internationales.</p></div>
         <div class="card"><h3>🎯 Accompagnement Expert</h3><p>De la recherche de bourse à la constitution du dossier.</p></div>
         <div class="card"><h3>📈 Taux de réussite 85%+</h3><p>Nos candidats décrochent une bourse ou un visa.</p></div>
     </div>
+    
     <div class="whatsapp">📞 Contact direct : +228 99326964 (WhatsApp)</div>
+    
     <footer>© 2025 RCEB - Togo. Tous droits réservés.</footer>
 </div>
+
+<!-- Script pour le compteur de visites (stockage local) -->
+<script>
+    let count = localStorage.getItem('visitCountRCEB');
+    if (count === null) {
+        count = 1;
+    } else {
+        count = Number(count) + 1;
+    }
+    localStorage.setItem('visitCountRCEB', count);
+    document.getElementById('visitCount').innerText = count;
+</script>
 </body>
 </html>
