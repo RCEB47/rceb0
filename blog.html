@@ -2,31 +2,46 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog RCEB : conseils pour décrocher une bourse, astuces CV et lettre de motivation, actualités des bourses internationales.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GPVEPNDQD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6GPVEPNDQD');
+    </script>
+    
+    <meta name="description" content="Blog RCEB : conseils pour décrocher une bourse, astuces CV et lettre de motivation.">
+    <meta name="keywords" content="blog bourses, conseils bourse, astuces CV, lettre de motivation">
+    <meta name="author" content="RCEB">
+    <meta name="robots" content="index, follow">
+    
     <title>Blog - RCEB</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Inter',sans-serif;background:#f9fafb;}
-        .container{max-width:1200px;margin:0 auto;padding:0 24px;}
-        .navbar{background:white;border-radius:24px;margin:20px auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
-        .logo{font-weight:700;font-size:1.4rem;color:#2563eb;}
-        .nav-links{display:flex;gap:24px;}
-        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
-        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;margin:40px 0;}
-        .blog-card{background:white;border-radius:24px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform 0.2s;}
-        .blog-card:hover{transform:translateY(-5px);}
-        .blog-img{width:100%;height:200px;object-fit:cover;}
-        .blog-content{padding:24px;}
-        .blog-date{font-size:0.75rem;color:#6b7280;margin-bottom:8px;}
-        .blog-title{font-size:1.4rem;font-weight:700;color:#1e3a8a;margin-bottom:12px;}
-        .blog-excerpt{color:#4b5563;margin-bottom:20px;}
-        .read-more{background:#2563eb;color:white;padding:8px 20px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.85rem;}
-        .counter{background:#f3f4f6;border-radius:60px;padding:8px 20px;display:inline-block;margin-bottom:20px;}
-        .float-wa{position:fixed;bottom:30px;right:30px;background:#25d366;color:white;border-radius:60px;padding:12px 20px;text-decoration:none;display:flex;align-items:center;gap:10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;font-weight:600;}
-        footer{text-align:center;padding:32px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:40px;}
-        @media (max-width:768px){.navbar{flex-direction:column;}}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;overflow-x:hidden;}
+        .container{max-width:1200px;margin:0 auto;padding:0 16px;}
+        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;}
+        .nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;font-size:0.9rem;}
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin:30px 0;}
+        .blog-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
+        .blog-img{width:100%;height:160px;object-fit:cover;}
+        .blog-content{padding:20px;}
+        .blog-date{font-size:0.7rem;color:#6b7280;margin-bottom:8px;}
+        .blog-title{font-size:1.1rem;font-weight:700;color:#1e3a8a;margin-bottom:10px;}
+        .blog-excerpt{color:#4b5563;margin-bottom:16px;font-size:0.85rem;}
+        .read-more{background:#2563eb;color:white;padding:8px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;}
+        .counter{background:#f3f4f6;border-radius:60px;padding:6px 16px;display:inline-block;margin-bottom:16px;font-size:0.8rem;}
+        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;font-size:0.85rem;}
+        footer{text-align:center;padding:24px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:30px;font-size:0.8rem;}
+        @media (max-width:768px){
+            .blog-grid{grid-template-columns:1fr;}
+        }
     </style>
 </head>
 <body>
@@ -42,7 +57,7 @@
         </div>
     </div>
     <div style="text-align:center"><span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span></div>
-    <h1 style="margin:30px 0 10px;">📝 Blog RCEB</h1>
+    <h1 style="margin:20px 0 10px;font-size:1.8rem;">📝 Blog RCEB</h1>
     <div class="blog-grid">
         <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=Bourse+100%25" alt="article"><div class="blog-content"><div class="blog-date">📅 15 avril 2025</div><div class="blog-title">Comment trouver une bourse 100% financée ?</div><div class="blog-excerpt">Les bourses 100% financées existent, mais il faut savoir où chercher...</div><a href="article-bourse-financee.html" class="read-more">Lire la suite →</a></div></div>
         <div class="blog-card"><img class="blog-img" src="https://placehold.co/600x400/0891b2/white?text=Lettre+Motivation" alt="article"><div class="blog-content"><div class="blog-date">📅 8 avril 2025</div><div class="blog-title">Les 5 erreurs à éviter dans votre lettre de motivation</div><div class="blog-excerpt">Votre lettre de motivation est souvent la clé de votre dossier...</div><a href="article-lettre-motivation.html" class="read-more">Lire la suite →</a></div></div>
@@ -53,7 +68,7 @@
     </div>
     <footer>© RCEB - Conseils et accompagnement pour vos bourses internationales.</footer>
 </div>
-<a href="https://wa.me/22899326964" class="float-wa" target="_blank">💬 Posez votre question</a>
+<a href="https://wa.me/22899326964" class="float-wa" target="_blank">💬 WhatsApp</a>
 <script>
     let count = localStorage.getItem('visitCountRCEB');
     if (count === null) count = 1;
