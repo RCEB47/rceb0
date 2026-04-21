@@ -1,205 +1,73 @@
-{
-  "id": "yxv7OYbDEnqsqfa9",
-  "meta": {
-    "instanceId": "fb924c73af8f703905bc09c9ee8076f48c17b596ed05b18c0ff86915ef8a7c4a"
-  },
-  "name": "WhatsApp starter workflow",
-  "tags": [],
-  "nodes": [
-    {
-      "id": "9b385dfe-fa67-4c2c-83df-e3e02c0ff796",
-      "name": "Verify",
-      "type": "n8n-nodes-base.webhook",
-      "position": [
-        700,
-        180
-      ],
-      "webhookId": "793f285b-9da7-4a5e-97ce-f0976c113db5",
-      "parameters": {
-        "path": "1fea1f5f-81c0-48ad-ae13-41e0f8e474ed",
-        "options": {},
-        "responseMode": "responseNode"
-      },
-      "typeVersion": 1.1
-    },
-    {
-      "id": "676efc61-c875-4675-a843-20f98ef1a642",
-      "name": "Respond to Webhook",
-      "type": "n8n-nodes-base.respondToWebhook",
-      "position": [
-        920,
-        180
-      ],
-      "parameters": {
-        "options": {},
-        "respondWith": "text",
-        "responseBody": "={{ $json.query['hub.challenge'] }}"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "8dd6d094-415c-40d7-ad2b-4ed9f2d23232",
-      "name": "Echo the message back",
-      "type": "n8n-nodes-base.whatsApp",
-      "position": [
-        1140,
-        540
-      ],
-      "parameters": {
-        "textBody": "=Echo back: {{ $json.body.entry[0].changes[0].value.messages[0].text.body }}",
-        "operation": "send",
-        "phoneNumberId": "244242975437240",
-        "additionalFields": {},
-        "recipientPhoneNumber": "={{ $json.body.entry[0].changes[0].value.messages[0].from }}"
-      },
-      "credentials": {
-        "whatsAppApi": {
-          "id": "credential-id",
-          "name": "whatsAppApi Credential"
-        }
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "cd9e2cfd-9589-4390-95fd-f0bc3960d60c",
-      "name": "Is message?",
-      "type": "n8n-nodes-base.if",
-      "position": [
-        920,
-        540
-      ],
-      "parameters": {
-        "options": {
-          "looseTypeValidation": true
-        },
-        "conditions": {
-          "options": {
-            "leftValue": "",
-            "caseSensitive": true,
-            "typeValidation": "loose"
-          },
-          "combinator": "and",
-          "conditions": [
-            {
-              "id": "8a765e57-8e39-4547-a99a-0458df2b75f4",
-              "operator": {
-                "type": "object",
-                "operation": "exists",
-                "singleValue": true
-              },
-              "leftValue": "={{ $json.body.entry[0].changes[0].value.messages[0] }}",
-              "rightValue": ""
-            }
-          ]
-        }
-      },
-      "typeVersion": 2
-    },
-    {
-      "id": "20939289-3c4f-467a-b0e9-bf7e6d42cc18",
-      "name": "Sticky Note",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        660,
-        46
-      ],
-      "parameters": {
-        "width": 618,
-        "height": 272,
-        "content": "## Verify Webhook\n* Go to your [Meta for Developers App page](https://developers.facebook.com/apps/), navigate to the App settings\n* Add a **production webhook URL** as a new Callback URL\n* *Verify* webhook receives a GET Request and sends back a verification code\n"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "36ffeb5b-165a-4723-8250-a4feb9123140",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        660,
-        360
-      ],
-      "parameters": {
-        "width": 619,
-        "height": 343,
-        "content": "## Main flow\n* *Respond* webhook receives various POST Requests from Meta regarding WhatsApp messages (user messages + status notifications)\n* Check if the incoming JSON contains user message\n* Echo back the text message to the user. This is a custom message, not a WhatsApp Business template message"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "aa234bca-c8db-43c6-9aeb-02aef6a084e5",
-      "name": "Sticky Note2",
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        240,
-        260
-      ],
-      "parameters": {
-        "color": 3,
-        "width": 405,
-        "height": 177,
-        "content": "## Important!\n### Configure the webhook nodes this way:\n* Make sure that both *Verify* and *Respond* have the same URL\n* *Verify* should have GET HTTP Method\n* *Respond* should have POST HTTP Method"
-      },
-      "typeVersion": 1
-    },
-    {
-      "id": "2370b81a-0721-42fd-8893-e3ee02e20278",
-      "name": "Respond",
-      "type": "n8n-nodes-base.webhook",
-      "position": [
-        700,
-        540
-      ],
-      "webhookId": "c4cbc1c4-e1f5-4ea5-bd9a-c5f697493985",
-      "parameters": {
-        "path": "1fea1f5f-81c0-48ad-ae13-41e0f8e474ed",
-        "options": {},
-        "httpMethod": "POST"
-      },
-      "typeVersion": 1.1
-    }
-  ],
-  "active": true,
-  "pinData": {},
-  "settings": {
-    "callerPolicy": "workflowsFromSameOwner",
-    "executionOrder": "v1",
-    "saveManualExecutions": true,
-    "saveDataSuccessExecution": "all"
-  },
-  "versionId": "0d254e91-2ad0-4f38-97d5-fec5057043ea",
-  "connections": {
-    "Verify": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Respond": {
-      "main": [
-        [
-          {
-            "node": "Is message?",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Is message?": {
-      "main": [
-        [
-          {
-            "node": "Echo the message back",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  }
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Boutique premium - RCEB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;overflow-x:hidden;}
+        .container{max-width:1200px;margin:0 auto;padding:0 16px;}
+        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;}
+        .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;font-size:0.9rem;}
+        .section-title{font-size:1.8rem;margin:30px 0 20px;color:#1e3a8a;border-left:4px solid #2563eb;padding-left:16px;}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:20px 0;}
+        .product-card{background:white;border-radius:20px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:transform 0.2s;}
+        .product-card:hover{transform:translateY(-4px);}
+        .product-title{font-size:1rem;font-weight:700;color:#1e3a8a;}
+        .product-price{font-size:1.3rem;font-weight:800;color:#2563eb;margin:10px 0;}
+        .whatsapp-btn{background:#25d366;color:white;padding:8px;border-radius:40px;text-decoration:none;display:block;text-align:center;font-weight:600;font-size:0.8rem;}
+        .badge{background:#fef3c7;color:#b45309;padding:4px 8px;border-radius:40px;font-size:0.7rem;display:inline-block;margin-bottom:8px;}
+        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;z-index:1000;}
+        footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;}
+        @media (max-width:768px){.products-grid{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo">RCEB</div>
+        <div class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="bourses.html">Bourses</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <h1 class="section-title">📘 Guides PDF</h1>
+    <div class="products-grid" id="guidesList"></div>
+
+    <footer>© RCEB - Paiement : Moov Money +228 99326964 / TMoney +228 72229276 / Ecobank</footer>
+</div>
+<a href="https://wa.me/22899326964" class="float-wa">💬 WhatsApp</a>
+
+<script>
+    const guides = [
+        { titre: "Matrice des Bourses Invisibles", prix: "5 000", badge: "⭐ Best seller" },
+        { titre: "CV Format OTAN (Europe/USA)", prix: "3 000", badge: "📄 PDF" },
+        { titre: "La Bible de la Lettre de Motivation", prix: "3 000", badge: "📝 15 templates" },
+        { titre: "Kit d'Entretien STAR Method", prix: "4 000", badge: "🎤 Entretien" },
+        { titre: "Numérisation : Le Dossier Parfait", prix: "1 500", badge: "📱 Mobile" },
+        { titre: "Check-List des Fonds de Garantie", prix: "3 500", badge: "💰 Finance" },
+        { titre: "Pack Destination (Allemagne/Canada)", prix: "6 000", badge: "🌍 Destination" },
+        { titre: "L'Agenda du Candidat Stratégique", prix: "2 500", badge: "📅 Agenda" },
+        { titre: "Modèle de Recommandation Express", prix: "2 000", badge: "✍️ Recommandation" },
+        { titre: "PACK BLACK EDITION (Bundle)", prix: "19 900", badge: "🎁 OFFRE SPÉCIALE" }
+    ];
+
+    const container = document.getElementById('guidesList');
+    container.innerHTML = guides.map(g => `
+        <div class="product-card">
+            <div class="badge">${g.badge}</div>
+            <div class="product-title">${g.titre}</div>
+            <div class="product-price">${g.prix} FCFA</div>
+            <a class="whatsapp-btn" href="https://wa.me/22899326964?text=Bonjour%2C%20je%20souhaite%20commander%20%22${encodeURIComponent(g.titre)}%22%20(${g.prix}%20FCFA)">📲 Commander sur WhatsApp</a>
+        </div>
+    `).join('');
+</script>
+</body>
+</html>
