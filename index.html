@@ -2,70 +2,328 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>RCEB - Bourses & Assistance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCEB – Réussite & Services</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Inter',sans-serif;background:#f9fafb;}
-        .container{max-width:1200px;margin:0 auto;padding:0 16px;}
-        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;}
-        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;}
-        .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
-        .nav-links a{text-decoration:none;color:#1f2937;}
-        .hero{background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');background-size:cover;background-position:center;border-radius:24px;padding:40px 20px;text-align:center;margin:20px 0;}
-        .hero h1{font-size:1.8rem;color:white;}
-        .btn{display:inline-block;padding:10px 20px;border-radius:40px;background:#2563eb;color:white;text-decoration:none;}
-        .features{display:flex;gap:20px;margin:30px 0;flex-wrap:wrap;}
-        .card{background:white;border-radius:20px;padding:20px;flex:1;text-align:center;}
-        .form-section{background:white;border-radius:24px;padding:24px;margin:30px 0;}
-        .volontariat-box{background:#e0f2fe;border-radius:24px;padding:30px;text-align:center;margin:30px 0;}
-        footer{text-align:center;padding:24px;color:#6b7280;}
-        @media (max-width:768px){.navbar{flex-direction:column;}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 25px 20px;
+        }
+
+        /* En-tête avec logo ET nom côte à côte */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0a2540;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .site-subtitle {
+            font-size: 1rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        /* Accroche */
+        .hero {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .hero h2 {
+            font-size: 1.6rem;
+            color: #0a2540;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #334155;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Boutons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0a2540;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            border: 2px solid #0a2540;
+        }
+
+        .btn:hover {
+            background-color: #1e3a5f;
+            border-color: #1e3a5f;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #0a2540;
+        }
+
+        .btn-outline:hover {
+            background: #0a2540;
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            margin: 45px 0 30px;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: #0a2540;
+            margin-bottom: 25px;
+            border-left: 5px solid #0a2540;
+            padding-left: 20px;
+        }
+
+        /* Cartes services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: #f8fafc;
+            padding: 25px 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            color: #0a2540;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* Témoignage */
+        .testimonial {
+            background: #e6edf6;
+            padding: 25px 20px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #0a2540;
+        }
+
+        .testimonial .author {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Formulaire rapide */
+        .quick-form {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .quick-form h4 {
+            font-size: 1.5rem;
+            color: #0a2540;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .form-row input {
+            padding: 12px 18px;
+            border: 1px solid #cbd5e1;
+            border-radius: 40px;
+            font-size: 1rem;
+            flex: 1 1 200px;
+            max-width: 300px;
+        }
+
+        .form-row button {
+            background: #0a2540;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #0a2540;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Responsive : sur mobile, logo et texte restent côte à côte */
+        @media (max-width: 480px) {
+            .header {
+                gap: 15px;
+            }
+            .logo {
+                height: 50px;
+            }
+            .site-title {
+                font-size: 1.8rem;
+            }
+            .site-subtitle {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
+
 <div class="container">
-    <div class="navbar">
-        <div class="logo">RCEB</div>
-        <div class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="boutique.html">Boutique</a>
-            <a href="bourses.html">Bourses</a>
-            <a href="coaching.html">Coaching</a>
-            <a href="premium.html">Premium</a>
-            <a href="contact.html">Contact</a>
+    <!-- EN-TÊTE : LOGO À GAUCHE, TEXTE À DROITE -->
+    <div class="header">
+        <img src="logo.jpg" alt="RCEB Logo" class="logo">
+        <div class="header-text">
+            <h1 class="site-title">RCEB</h1>
+            <p class="site-subtitle">Réussite & Services – Togo</p>
         </div>
     </div>
 
+    <!-- HERO / ACCROCHE -->
     <div class="hero">
-        <h1>Réalisez vos ambitions académiques</h1>
-        <p>Bourses, guides, coaching, accompagnement premium</p>
-        <a href="bourses.html" class="btn">🎓 Voir les bourses</a>
-        <a href="boutique.html" class="btn" style="background:#0891b2;">📚 Boutique</a>
+        <h2>Votre accompagnement vers les bourses internationales</h2>
+        <p>Guides PDF, coaching personnalisé, programmes de volontariat – tout pour concrétiser votre projet d'études à l'étranger.</p>
     </div>
 
-    <div class="features">
-        <div class="card"><h3>🌍 Bourses 100% financées</h3><p>Universités, gouvernements, fondations.</p></div>
-        <div class="card"><h3>🎯 Accompagnement expert</h3><p>De la recherche à l’obtention.</p></div>
-        <div class="card"><h3>📈 Taux de réussite 85%+</h3><p>Nos candidats décrochent une bourse.</p></div>
+    <!-- BOUTONS D'ACTION -->
+    <div class="btn-group">
+        <a href="#" class="btn">📚 Voir les bourses</a>
+        <a href="#" class="btn btn-outline">📩 Formulaire gratuit</a>
+        <a href="#" class="btn btn-outline">📘 Guides PDF</a>
     </div>
 
-    <!-- Formulaire d'inscription (matching + email automatique) -->
-    <div class="form-section">
-        <h2>📋 Recevez votre sélection personnalisée de bourses</h2>
-        <p>Remplissez ce formulaire et recevez sous 24h une liste de bourses adaptées à votre profil.</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfS9gbmeTAwHMx1eQw875luer-3OXMbKttYd5181FObE2djTQ/viewform?embedded=true" width="100%" height="600" frameborder="0">Chargement…</iframe>
+    <!-- SECTION SERVICES -->
+    <div class="section">
+        <h3>Ce que nous proposons</h3>
+        <div class="services-grid">
+            <div class="service-card">
+                <h4>🌍 +300 Bourses</h4>
+                <p>Base de données mise à jour chaque semaine. Bourses complètes, partielles, par pays.</p>
+            </div>
+            <div class="service-card">
+                <h4>📄 Guides PDF</h4>
+                <p>CV, lettres de motivation, modèles et exemples qui ont fait leurs preuves.</p>
+            </div>
+            <div class="service-card">
+                <h4>🤝 Coaching</h4>
+                <p>Accompagnement individuel pour maximiser vos chances d'obtenir une bourse.</p>
+            </div>
+            <div class="service-card">
+                <h4>💚 Volontariat</h4>
+                <p>Programmes gratuits pour acquérir de l'expérience à l'international.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- Programme de volontariat -->
-    <div class="volontariat-box">
-        <h3>🤝 Programme de volontariat RCEB</h3>
-        <p>Accompagnement gratuit pour étudiants motivés sans moyens financiers.</p>
-        <a href="volontariat.html" class="btn" style="background:#0891b2;">Postuler au volontariat →</a>
+    <!-- TÉMOIGNAGE -->
+    <div class="testimonial">
+        <p>« Grâce à RCEB, j'ai obtenu une bourse complète pour le Canada. Guides clairs et accompagnement au top ! »</p>
+        <div class="author">— Aminata K., étudiante boursière</div>
     </div>
 
-    <footer>© 2025 RCEB - Togo | +228 99326964 | reussir9932@gmail.com</footer>
+    <!-- FORMULAIRE RAPIDE -->
+    <div class="quick-form">
+        <h4>Reçois ta sélection personnalisée</h4>
+        <p style="text-align: center; margin-bottom: 20px; color: #475569;">Gratuit • Réponse sous 24h</p>
+        <div class="form-row">
+            <input type="email" placeholder="Ton adresse email">
+            <button>Envoyer</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 RCEB – Réussite & Services. Tous droits réservés.</p>
+        <p>📧 <a href="mailto:Omorouhassane9091@gmail.com">Omorouhassane9091@gmail.com</a> | 🌐 <a href="https://RCEB47.github.io/rceb0/">RCEB47.github.io/rceb0</a></p>
+        <p style="margin-top: 10px;">🇹🇬 Togo – Accompagner les talents africains vers l'excellence académique.</p>
+    </footer>
 </div>
+
 </body>
 </html>
