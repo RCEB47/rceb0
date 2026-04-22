@@ -2,8 +2,16 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon (icône dans l'onglet) -->
-    <link rel="icon" type="image/png" href="https://RCEB47.github.io/rceb0/logo-rceb.png">
+    <!-- Favicon universel (émoji) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    
+    <!-- Balises pour l'aperçu du lien (WhatsApp, Facebook, etc.) -->
+    <meta property="og:title" content="RCEB - Bourses & Assistance documentaire">
+    <meta property="og:description" content="Accédez aux meilleures bourses internationales et aux guides PDF pour réussir votre candidature. Accompagnement expert au Togo.">
+    <meta property="og:image" content="https://RCEB47.github.io/rceb0/logo-rceb.png">
+    <meta property="og:url" content="https://RCEB47.github.io/rceb0/">
+    <meta property="og:type" content="website">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Google Analytics -->
@@ -39,7 +47,6 @@
             margin: 0 auto;
             padding: 0 16px;
         }
-        /* Navbar */
         .navbar {
             background: white;
             border-radius: 24px;
@@ -80,7 +87,6 @@
         .nav-links a:hover {
             color: #2563eb;
         }
-        /* Boutons */
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -106,7 +112,6 @@
         .btn-outline:hover {
             background: #eff6ff;
         }
-        /* Hero */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
@@ -134,7 +139,6 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-        /* Features */
         .features {
             display: flex;
             gap: 24px;
@@ -160,7 +164,6 @@
             color: #2563eb;
             margin-bottom: 12px;
         }
-        /* Popular Bourses */
         .popular-scholarships {
             margin: 50px 0;
         }
@@ -199,7 +202,6 @@
             border-radius: 40px;
             font-size: 0.75rem;
         }
-        /* Volontariat */
         .volontariat-box {
             background: #e0f2fe;
             border-radius: 24px;
@@ -211,7 +213,6 @@
             color: #0369a1;
             margin-bottom: 12px;
         }
-        /* Formulaire */
         .form-section {
             background: white;
             border-radius: 24px;
@@ -233,7 +234,6 @@
             width: 100%;
             border-radius: 20px;
         }
-        /* Témoignages */
         .testimonials {
             background: white;
             border-radius: 24px;
@@ -264,7 +264,6 @@
         .testimonial-card strong {
             color: #1e3a8a;
         }
-        /* WhatsApp & Footer */
         .whatsapp {
             background: #25d366;
             color: white;
@@ -318,7 +317,6 @@
 </head>
 <body>
 <div class="container">
-    <!-- Navbar avec logo -->
     <div class="navbar">
         <div class="logo">
             <img src="https://RCEB47.github.io/rceb0/logo-rceb.png" alt="Logo RCEB">
@@ -335,12 +333,10 @@
         </div>
     </div>
 
-    <!-- Compteur -->
     <div style="text-align: center;">
         <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
     </div>
 
-    <!-- Hero -->
     <div class="hero">
         <h1>Réalisez vos ambitions académiques avec RCEB</h1>
         <p>Bourses internationales, guides PDF, coaching personnalisé et accompagnement premium.</p>
@@ -350,18 +346,15 @@
         </div>
     </div>
 
-    <!-- Features -->
     <div class="features">
         <div class="card"><h3>🌍 Bourses 100% financées</h3><p>Universités, gouvernements, fondations.</p></div>
         <div class="card"><h3>🎯 Accompagnement expert</h3><p>De la recherche à l’obtention.</p></div>
         <div class="card"><h3>📈 Taux de réussite 85%+</h3><p>Nos candidats décrochent une bourse.</p></div>
     </div>
 
-    <!-- Section Bourses les plus populaires -->
     <div class="popular-scholarships">
         <h2 style="font-size: 1.8rem; text-align: center; margin-bottom: 30px; color: #1e3a8a;">🔥 Bourses les plus populaires</h2>
         <div class="popular-grid">
-            <!-- Bourse Turquie -->
             <div class="popular-card">
                 <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=200&fit=crop" alt="Turquie">
                 <div class="popular-card-content">
@@ -373,7 +366,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Bourse Canada -->
             <div class="popular-card">
                 <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=200&fit=crop" alt="Canada">
                 <div class="popular-card-content">
@@ -385,7 +377,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Bourse Allemagne -->
             <div class="popular-card">
                 <img src="https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=400&h=200&fit=crop" alt="Allemagne">
                 <div class="popular-card-content">
@@ -403,21 +394,18 @@
         </div>
     </div>
 
-    <!-- Volontariat -->
     <div class="volontariat-box">
         <h3>🤝 Programme de volontariat RCEB</h3>
         <p>Accompagnement gratuit pour étudiants motivés sans moyens financiers.</p>
         <a href="volontariat.html" class="btn btn-primary" style="background:#0891b2;">Postuler au volontariat →</a>
     </div>
 
-    <!-- Formulaire d'inscription (Matching) -->
     <div class="form-section">
         <h2>📋 Recevez votre sélection personnalisée de bourses</h2>
         <p>Remplissez ce formulaire et recevez sous 24h une liste de bourses adaptées à votre profil.<br><strong>Gratuit et sans engagement.</strong></p>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfS9gbmeTAwHMx1eQw875luer-3OXMbKttYd5181FObE2djTQ/viewform?embedded=true" height="700" frameborder="0">Chargement…</iframe>
     </div>
 
-    <!-- Témoignages -->
     <div class="testimonials">
         <h2 style="font-size: 1.6rem; margin-bottom: 20px;">💬 Ils nous ont fait confiance</h2>
         <div class="testimonial-grid">
@@ -427,20 +415,16 @@
         </div>
     </div>
 
-    <!-- WhatsApp direct -->
     <div class="whatsapp">📞 Contact direct : +228 99326964 (WhatsApp)</div>
 
-    <!-- Footer -->
     <footer>
         <p>© 2025 RCEB - Togo. Tous droits réservés.</p>
         <p style="margin-top: 8px;">📧 reussir9932@gmail.com | 📍 Lomé, Togo</p>
     </footer>
 </div>
 
-<!-- WhatsApp flottant -->
 <a href="https://wa.me/22899326964" class="float-wa" target="_blank">💬 WhatsApp</a>
 
-<!-- Script compteur -->
 <script>
     let count = localStorage.getItem('visitCountRCEB');
     if (count === null) count = 1;
