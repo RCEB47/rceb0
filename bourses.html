@@ -20,7 +20,7 @@
         button{background:#2563eb;color:white;border:none;padding:8px 20px;border-radius:40px;cursor:pointer;font-weight:600;}
         .results-count{margin:16px 0;font-weight:600;}
         .bourse-card{background:white;border-radius:20px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:flex;flex-wrap:wrap;overflow:hidden;}
-        .bourse-img{width:200px;height:160px;object-fit:cover;flex-shrink:0;}
+        .bourse-img{width:200px;height:140px;object-fit:cover;flex-shrink:0;}
         .bourse-info{padding:16px;flex:1;}
         .bourse-title{font-size:1.2rem;font-weight:700;color:#1e3a8a;margin-bottom:6px;}
         .bourse-meta{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap;}
@@ -28,19 +28,20 @@
         .deadline{color:#b91c1c;}
         .bourse-desc{color:#4b5563;margin:8px 0;font-size:0.85rem;}
         .btn-link{background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;margin-right:8px;}
-        .btn-prepare{background:#0891b2;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;}
+        .btn-prepare{background:#0891b2;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;border:none;cursor:pointer;}
         .future-date{font-size:0.75rem;color:#b45309;margin:8px 0;}
         .selling-point{background:#fef3c7;padding:8px;border-radius:12px;margin:8px 0;font-size:0.8rem;color:#92400e;}
-        /* Modal formulaire */
+        .no-link{color:#b45309;font-size:0.8rem;display:inline-block;margin-right:8px;}
+        /* Modal */
         .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;justify-content:center;align-items:center;}
         .modal-content{background:white;border-radius:24px;padding:24px;max-width:500px;width:90%;}
-        .modal-content select,.modal-content input{width:100%;margin:8px 0;}
+        .modal-content select,.modal-content input{width:100%;margin:8px 0;padding:8px;border-radius:40px;border:1px solid #d1d5db;}
         .close{float:right;cursor:pointer;font-size:1.5rem;}
         .product-reco{background:#e0f2fe;border-radius:16px;padding:12px;margin-top:16px;}
         footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;}
         @media (max-width:768px){
             .bourse-card{flex-direction:column;}
-            .bourse-img{width:100%;height:180px;}
+            .bourse-img{width:100%;height:160px;}
         }
     </style>
 </head>
@@ -77,8 +78,8 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h3>📝 Préparer ma future candidature</h3>
-        <p>Bourse sélectionnée : <strong id="modalBourse"></strong></p>
-        <p>Date estimée prochain appel : <strong id="modalDate"></strong></p>
+        <p>Bourse : <strong id="modalBourse"></strong></p>
+        <p>Prochain appel estimé : <strong id="modalDate"></strong></p>
         <label>Votre profil :</label>
         <select id="profil">
             <option value="bachelier">Bachelier (étudiant en licence)</option>
@@ -87,11 +88,11 @@
             <option value="doctorat">Doctorant</option>
             <option value="professionnel">Jeune professionnel</option>
         </select>
-        <label>Votre email :</label>
+        <label>Email :</label>
         <input type="email" id="emailProfil" placeholder="exemple@email.com">
-        <label>Votre numéro WhatsApp :</label>
+        <label>WhatsApp :</label>
         <input type="tel" id="whatsappProfil" placeholder="+228 XX XX XX XX">
-        <button onclick="submitProfil()">Recevoir mes recommandations</button>
+        <button onclick="submitProfil()" style="background:#0891b2;">Recevoir mes recommandations</button>
         <div id="productReco" class="product-reco" style="display:none;"></div>
     </div>
 </div>
@@ -101,13 +102,14 @@
     const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5";
     let allRecords = [];
 
+    // Images optimisées (petites tailles)
     const countryImages = {
-        "Canada": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=300&fit=crop",
-        "Turquie": "https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=300&fit=crop",
-        "Allemagne": "https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=400&h=300&fit=crop",
-        "Europe": "https://images.unsplash.com/photo-1565105072389-638d9c9b4cf3?w=400&h=300&fit=crop",
-        "Chine": "https://images.unsplash.com/photo-1524318323766-1b4f8c23c16e?w=400&h=300&fit=crop",
-        "France": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&h=300&fit=crop"
+        "Canada": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=200&h=150&fit=crop",
+        "Turquie": "https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=200&h=150&fit=crop",
+        "Allemagne": "https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=200&h=150&fit=crop",
+        "Europe": "https://images.unsplash.com/photo-1565105072389-638d9c9b4cf3?w=200&h=150&fit=crop",
+        "Chine": "https://images.unsplash.com/photo-1524318323766-1b4f8c23c16e?w=200&h=150&fit=crop",
+        "France": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=200&h=150&fit=crop"
     };
 
     async function fetchBourses() {
@@ -149,14 +151,20 @@
     }
 
     function getSellingText(bourse) {
-        return `✨ ${bourse.titre} : financement complet, logement inclus, allocation mensuelle. Postulez l'année prochaine avec un dossier prêt. Ne ratez pas cette opportunité !`;
+        return `✨ ${bourse.titre.substring(0, 60)} : financement complet, logement inclus, allocation mensuelle. Préparez-vous dès maintenant pour le prochain appel.`;
+    }
+
+    function isValidLink(link) {
+        return link && (link.startsWith('http://') || link.startsWith('https://'));
     }
 
     let currentBourse = null;
+    let currentDeadline = null;
 
-    function openPrepModal(bourse, deadline) {
-        currentBourse = bourse;
-        document.getElementById('modalBourse').innerText = bourse.titre;
+    function openPrepModal(titre, deadline) {
+        currentBourse = titre;
+        currentDeadline = deadline;
+        document.getElementById('modalBourse').innerText = titre;
         document.getElementById('modalDate').innerText = getFutureDate(deadline);
         document.getElementById('prepModal').style.display = 'flex';
         document.getElementById('productReco').style.display = 'none';
@@ -183,8 +191,8 @@
         document.getElementById('productReco').innerHTML = recoHtml;
         document.getElementById('productReco').style.display = 'block';
         
-        // Envoi des données (simulation)
-        console.log(`Profil: ${profil}, Email: ${email}, WhatsApp: ${whatsapp}, Bourse: ${currentBourse.titre}`);
+        // Envoi des données (à connecter à Google Sheets ou email)
+        console.log(`Profil: ${profil}, Email: ${email}, WhatsApp: ${whatsapp}, Bourse: ${currentBourse}`);
         alert("Vos informations ont été enregistrées. Vous recevrez un email avec nos recommandations.");
     }
 
@@ -205,7 +213,7 @@
         if(filtered.length === 0) { container.innerHTML = '<p>Aucune bourse.</p>'; return; }
         container.innerHTML = filtered.map(b => `
             <div class="bourse-card">
-                <img class="bourse-img" src="${b.image}" alt="${b.pays}" onerror="this.src='https://placehold.co/400x300/2563eb/white?text=Université'">
+                <img class="bourse-img" src="${b.image}" alt="${b.pays}" loading="lazy" onerror="this.src='https://placehold.co/400x300/2563eb/white?text=Université'">
                 <div class="bourse-info">
                     <div class="bourse-title">${b.titre}</div>
                     <div class="bourse-meta">
@@ -217,8 +225,8 @@
                     <div class="selling-point">${getSellingText(b)}</div>
                     <div class="future-date">📅 Prochain appel estimé : ${getFutureDate(b.deadline)}</div>
                     <div style="margin-top: 10px;">
-                        ${b.lien && b.lien.startsWith('http') ? `<a href="${b.lien}" target="_blank" class="btn-link">🎓 Voir l'offre officielle</a>` : '<span style="color:#b45309; font-size:0.8rem;">Lien officiel non disponible pour le moment</span>'}
-                        <button class="btn-prepare" onclick="openPrepModal(${JSON.stringify(b)}, '${b.deadline}')">📝 Préparer ma future candidature</button>
+                        ${isValidLink(b.lien) ? `<a href="${b.lien}" target="_blank" class="btn-link">🎓 Voir l'offre officielle</a>` : '<span class="no-link">🔗 Lien officiel non disponible</span>'}
+                        <button class="btn-prepare" onclick="openPrepModal('${b.titre.replace(/'/g, "\\'")}', '${b.deadline}')">📝 Préparer ma future candidature</button>
                     </div>
                 </div>
             </div>
