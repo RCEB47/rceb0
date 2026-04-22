@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon (ton logo) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
     
     <!-- Balises Open Graph (aperçu WhatsApp, Facebook, etc.) -->
-    <meta property="og:title" content="RCEB - Bourses & Assistance documentaire">
+    <meta property="og:title" content="RCEB - Bourses & Assistance documentaire (Togo)">
     <meta property="og:description" content="Accédez aux meilleures bourses internationales et aux guides PDF pour réussir votre candidature. Accompagnement expert au Togo.">
     <meta property="og:image" content="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
     <meta property="og:url" content="https://RCEB47.github.io/rceb0/">
@@ -28,7 +28,7 @@
     <meta name="author" content="RCEB">
     <meta name="robots" content="index, follow">
     
-    <title>RCEB - Bourses & Assistance documentaire</title>
+    <title>RCEB - Bourses & Assistance documentaire (Togo)</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -232,6 +232,7 @@
         }
         iframe {
             width: 100%;
+            min-height: 600px;
             border-radius: 20px;
         }
         .testimonials {
@@ -306,12 +307,19 @@
             margin-top: 30px;
             font-size: 0.8rem;
         }
+        footer a {
+            color: #2563eb;
+            text-decoration: none;
+            margin: 0 6px;
+        }
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.6rem; }
             .hero p { font-size: 0.9rem; }
             .card h3 { font-size: 1.1rem; }
             .form-section { padding: 20px; }
-            iframe { height: 500px; }
+            iframe { min-height: 500px; }
+            .logo img { height: 30px; }
+            .testimonial-card p { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -362,7 +370,7 @@
                     <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse complète : frais, logement, allocation mensuelle. Niveaux Licence, Master, Doctorat.</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="badge-date">📅 31 janv. 2026</span>
-                        <a href="bourses.html" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
+                        <a href="bourses.html?pays=Turquie" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
                     </div>
                 </div>
             </div>
@@ -373,7 +381,7 @@
                     <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse d’excellence pour doctorat. Financement complet + allocation.</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="badge-date">📅 1 nov. 2026</span>
-                        <a href="bourses.html" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
+                        <a href="bourses.html?pays=Canada" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
                     </div>
                 </div>
             </div>
@@ -384,7 +392,7 @@
                     <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse pour étudiants africains. Master et Doctorat.</p>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span class="badge-date">📅 28 fév. 2026</span>
-                        <a href="bourses.html" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
+                        <a href="bourses.html?pays=Allemagne" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
                     </div>
                 </div>
             </div>
@@ -403,7 +411,7 @@
     <div class="form-section">
         <h2>📋 Recevez votre sélection personnalisée de bourses</h2>
         <p>Remplissez ce formulaire et recevez sous 24h une liste de bourses adaptées à votre profil.<br><strong>Gratuit et sans engagement.</strong></p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfS9gbmeTAwHMx1eQw875luer-3OXMbKttYd5181FObE2djTQ/viewform?embedded=true" height="700" frameborder="0">Chargement…</iframe>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfS9gbmeTAwHMx1eQw875luer-3OXMbKttYd5181FObE2djTQ/viewform?embedded=true" frameborder="0">Chargement…</iframe>
     </div>
 
     <div class="testimonials">
@@ -419,11 +427,16 @@
 
     <footer>
         <p>© 2025 RCEB - Togo. Tous droits réservés.</p>
-        <p style="margin-top: 8px;">📧 reussir9932@gmail.com | 📍 Lomé, Togo</p>
+        <p style="margin-top: 8px;">
+            📧 reussir9932@gmail.com | 📍 Lomé, Togo<br>
+            <a href="coaching.html">Coaching</a> | 
+            <a href="premium.html">Premium</a> | 
+            <a href="volontariat.html">Volontariat</a>
+        </p>
     </footer>
 </div>
 
-<a href="https://wa.me/22899326964" class="float-wa" target="_blank">💬 WhatsApp</a>
+<a href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20j%27ai%20une%20question%20sur%20les%20bourses%20ou%20l%27accompagnement." class="float-wa" target="_blank">💬 Une question ? Écris-nous</a>
 
 <script>
     let count = localStorage.getItem('visitCountRCEB');
