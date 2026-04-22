@@ -13,7 +13,6 @@
         gtag('config', 'G-6GPVEPNDQD');
     </script>
     
-    <!-- SEO -->
     <meta name="description" content="RCEB : Bourses internationales, guides PDF, accompagnement expert, coaching, services premium. Réussissez vos études à l'étranger.">
     <meta name="keywords" content="bourses internationales, guides PDF, coaching, premium, accompagnement, Togo">
     <meta name="author" content="RCEB">
@@ -51,24 +50,11 @@
             gap: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
-        
-        /* --- NOUVEAU : Logo + Texte côte à côte --- */
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-img {
-            height: 45px;
-            width: auto;
-        }
-        .logo-text {
+        .logo {
             font-weight: 700;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #2563eb;
         }
-        /* -------------------------------------- */
-        
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -164,6 +150,45 @@
             font-size: 1.3rem;
             color: #2563eb;
             margin-bottom: 12px;
+        }
+        /* Popular Bourses */
+        .popular-scholarships {
+            margin: 50px 0;
+        }
+        .popular-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .popular-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            max-width: 320px;
+            transition: transform 0.2s;
+        }
+        .popular-card:hover {
+            transform: translateY(-5px);
+        }
+        .popular-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .popular-card-content {
+            padding: 20px;
+        }
+        .popular-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+        .badge-date {
+            background: #e0f2fe;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
         }
         /* Volontariat */
         .volontariat-box {
@@ -279,19 +304,14 @@
             .card h3 { font-size: 1.1rem; }
             .form-section { padding: 20px; }
             iframe { height: 500px; }
-            .logo-img { height: 35px; }
-            .logo-text { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- Navbar avec LOGO intégré -->
+    <!-- Navbar -->
     <div class="navbar">
-        <div class="logo-wrapper">
-            <img src="logo.jpg" alt="RCEB Logo" class="logo-img">
-            <span class="logo-text">RCEB - Bourses & Assistance</span>
-        </div>
+        <div class="logo">RCEB - Bourses & Assistance</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
@@ -325,6 +345,52 @@
         <div class="card"><h3>📈 Taux de réussite 85%+</h3><p>Nos candidats décrochent une bourse.</p></div>
     </div>
 
+    <!-- Section Bourses les plus populaires -->
+    <div class="popular-scholarships">
+        <h2 style="font-size: 1.8rem; text-align: center; margin-bottom: 30px; color: #1e3a8a;">🔥 Bourses les plus populaires</h2>
+        <div class="popular-grid">
+            <!-- Bourse Turquie -->
+            <div class="popular-card">
+                <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=200&fit=crop" alt="Turquie">
+                <div class="popular-card-content">
+                    <h3>🇹🇷 Bourse Turquie 2026</h3>
+                    <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse complète : frais, logement, allocation mensuelle. Niveaux Licence, Master, Doctorat.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge-date">📅 31 janv. 2026</span>
+                        <a href="bourses.html" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Bourse Canada -->
+            <div class="popular-card">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=200&fit=crop" alt="Canada">
+                <div class="popular-card-content">
+                    <h3>🇨🇦 Bourse Vanier (Canada)</h3>
+                    <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse d’excellence pour doctorat. Financement complet + allocation.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge-date">📅 1 nov. 2026</span>
+                        <a href="bourses.html" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Bourse Allemagne -->
+            <div class="popular-card">
+                <img src="https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=400&h=200&fit=crop" alt="Allemagne">
+                <div class="popular-card-content">
+                    <h3>🇩🇪 Bourse DAAD (Allemagne)</h3>
+                    <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse pour étudiants africains. Master et Doctorat.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="badge-date">📅 28 fév. 2026</span>
+                        <a href="bourses.html" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="bourses.html" class="btn btn-primary" style="background:#0891b2;">🔍 Voir toutes les bourses →</a>
+        </div>
+    </div>
+
     <!-- Volontariat -->
     <div class="volontariat-box">
         <h3>🤝 Programme de volontariat RCEB</h3>
@@ -343,9 +409,9 @@
     <div class="testimonials">
         <h2 style="font-size: 1.6rem; margin-bottom: 20px;">💬 Ils nous ont fait confiance</h2>
         <div class="testimonial-grid">
-            <div class="testimonial-card"><p>"Grâce à RCEB, j'ai obtenu une bourse complète au Canada !"</p><strong>— Amara T.</strong></div>
-            <div class="testimonial-card"><p>"L'accompagnement est incroyable. Je recommande vivement."</p><strong>— Koffi M.</strong></div>
-            <div class="testimonial-card"><p>"La base de données des bourses m'a fait gagner des mois de recherche."</p><strong>— Nadia L.</strong></div>
+            <div class="testimonial-card"><p>"Grâce à RCEB, j’ai obtenu une bourse complète au Canada !"</p><strong>— Amara T.</strong></div>
+            <div class="testimonial-card"><p>"L’accompagnement est incroyable. Je recommande vivement."</p><strong>— Koffi M.</strong></div>
+            <div class="testimonial-card"><p>"La base de données des bourses m’a fait gagner des mois de recherche."</p><strong>— Nadia L.</strong></div>
         </div>
     </div>
 
