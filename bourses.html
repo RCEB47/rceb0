@@ -27,7 +27,16 @@
         .badge{background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:40px;font-size:0.7rem;}
         .deadline{color:#b91c1c;}
         .bourse-desc{color:#4b5563;margin:8px 0;font-size:0.85rem;}
-        .btn-link{background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;}
+        .btn-link{background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;margin-right:8px;}
+        .btn-prepare{background:#0891b2;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;}
+        .future-date{font-size:0.75rem;color:#b45309;margin:8px 0;}
+        .selling-point{background:#fef3c7;padding:8px;border-radius:12px;margin:8px 0;font-size:0.8rem;color:#92400e;}
+        /* Modal formulaire */
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;justify-content:center;align-items:center;}
+        .modal-content{background:white;border-radius:24px;padding:24px;max-width:500px;width:90%;}
+        .modal-content select,.modal-content input{width:100%;margin:8px 0;}
+        .close{float:right;cursor:pointer;font-size:1.5rem;}
+        .product-reco{background:#e0f2fe;border-radius:16px;padding:12px;margin-top:16px;}
         footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;}
         @media (max-width:768px){
             .bourse-card{flex-direction:column;}
@@ -63,12 +72,35 @@
     <footer>© RCEB - Bourses mises à jour quotidiennement</footer>
 </div>
 
+<!-- Modal formulaire -->
+<div id="prepModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>📝 Préparer ma future candidature</h3>
+        <p>Bourse sélectionnée : <strong id="modalBourse"></strong></p>
+        <p>Date estimée prochain appel : <strong id="modalDate"></strong></p>
+        <label>Votre profil :</label>
+        <select id="profil">
+            <option value="bachelier">Bachelier (étudiant en licence)</option>
+            <option value="licence">Étudiant en Licence</option>
+            <option value="master">Étudiant en Master</option>
+            <option value="doctorat">Doctorant</option>
+            <option value="professionnel">Jeune professionnel</option>
+        </select>
+        <label>Votre email :</label>
+        <input type="email" id="emailProfil" placeholder="exemple@email.com">
+        <label>Votre numéro WhatsApp :</label>
+        <input type="tel" id="whatsappProfil" placeholder="+228 XX XX XX XX">
+        <button onclick="submitProfil()">Recevoir mes recommandations</button>
+        <div id="productReco" class="product-reco" style="display:none;"></div>
+    </div>
+</div>
+
 <script>
     const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";
     const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5";
     let allRecords = [];
 
-    // Map des images par pays (tu peux ajouter d'autres liens)
     const countryImages = {
         "Canada": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=300&fit=crop",
         "Turquie": "https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=300&fit=crop",
@@ -109,6 +141,53 @@
         Array.from(niveauSet).sort().forEach(n => niveauSelect.innerHTML += `<option value="${n}">${n}</option>`);
     }
 
+    function getFutureDate(deadline) {
+        if (!deadline) return "Date non connue, restez informé";
+        let date = new Date(deadline);
+        date.setFullYear(date.getFullYear() + 1);
+        return date.toLocaleDateString('fr-FR');
+    }
+
+    function getSellingText(bourse) {
+        return `✨ ${bourse.titre} : financement complet, logement inclus, allocation mensuelle. Postulez l'année prochaine avec un dossier prêt. Ne ratez pas cette opportunité !`;
+    }
+
+    let currentBourse = null;
+
+    function openPrepModal(bourse, deadline) {
+        currentBourse = bourse;
+        document.getElementById('modalBourse').innerText = bourse.titre;
+        document.getElementById('modalDate').innerText = getFutureDate(deadline);
+        document.getElementById('prepModal').style.display = 'flex';
+        document.getElementById('productReco').style.display = 'none';
+    }
+
+    function closeModal() {
+        document.getElementById('prepModal').style.display = 'none';
+    }
+
+    function submitProfil() {
+        const profil = document.getElementById('profil').value;
+        const email = document.getElementById('emailProfil').value;
+        const whatsapp = document.getElementById('whatsappProfil').value;
+        if (!email || !whatsapp) { alert("Veuillez remplir email et WhatsApp"); return; }
+        
+        let produits = [];
+        if (profil === 'bachelier') produits = ["📘 Guide Licence", "📝 Pack Lettre de Motivation", "🎓 Coaching semi (10 000 FCFA)"];
+        else if (profil === 'licence') produits = ["📘 Matrice des Bourses", "📄 CV Format OTAN", "🎓 Coaching complet (25 000 FCFA)"];
+        else if (profil === 'master') produits = ["🌍 Pack Destination (Allemagne/Canada)", "📘 Bible Lettre Motivation", "🎓 Coaching premium (50 000 FCFA)"];
+        else if (profil === 'doctorat') produits = ["🎓 Coaching complet", "📘 Kit d'Entretien STAR", "💎 Stratégie personnalisée (500 000 FCFA)"];
+        else produits = ["📘 Matrice des Bourses", "🎓 Coaching semi", "🤝 Programme volontariat"];
+        
+        const recoHtml = `<strong>✅ Produits recommandés pour vous :</strong><br>${produits.map(p => `- ${p}<br>`).join('')}<br><a href="boutique.html" style="background:#2563eb;color:white;padding:6px 12px;border-radius:40px;text-decoration:none;">🛒 Voir la boutique</a>`;
+        document.getElementById('productReco').innerHTML = recoHtml;
+        document.getElementById('productReco').style.display = 'block';
+        
+        // Envoi des données (simulation)
+        console.log(`Profil: ${profil}, Email: ${email}, WhatsApp: ${whatsapp}, Bourse: ${currentBourse.titre}`);
+        alert("Vos informations ont été enregistrées. Vous recevrez un email avec nos recommandations.");
+    }
+
     function displayBourses() {
         const searchTerm = document.getElementById('search').value.toLowerCase();
         const paysVal = document.getElementById('paysFilter').value;
@@ -135,7 +214,12 @@
                         ${b.deadline ? `<span class="badge deadline">⏰ ${new Date(b.deadline).toLocaleDateString()}</span>` : ''}
                     </div>
                     <div class="bourse-desc">${b.description.substring(0, 120)}...</div>
-                    ${b.lien ? `<a href="${b.lien}" target="_blank" class="btn-link">Voir l'offre officielle →</a>` : ''}
+                    <div class="selling-point">${getSellingText(b)}</div>
+                    <div class="future-date">📅 Prochain appel estimé : ${getFutureDate(b.deadline)}</div>
+                    <div style="margin-top: 10px;">
+                        ${b.lien && b.lien.startsWith('http') ? `<a href="${b.lien}" target="_blank" class="btn-link">🎓 Voir l'offre officielle</a>` : '<span style="color:#b45309; font-size:0.8rem;">Lien officiel non disponible pour le moment</span>'}
+                        <button class="btn-prepare" onclick="openPrepModal(${JSON.stringify(b)}, '${b.deadline}')">📝 Préparer ma future candidature</button>
+                    </div>
                 </div>
             </div>
         `).join('');
