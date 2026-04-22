@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <!-- Favicon (icône dans l'onglet) -->
+    <link rel="icon" type="image/png" href="https://RCEB47.github.io/rceb0/logo-rceb.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Google Analytics -->
@@ -54,6 +56,13 @@
             font-weight: 700;
             font-size: 1.2rem;
             color: #2563eb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            height: 40px;
+            vertical-align: middle;
         }
         .nav-links {
             display: flex;
@@ -309,9 +318,12 @@
 </head>
 <body>
 <div class="container">
-    <!-- Navbar -->
+    <!-- Navbar avec logo -->
     <div class="navbar">
-        <div class="logo">RCEB - Bourses & Assistance</div>
+        <div class="logo">
+            <img src="https://RCEB47.github.io/rceb0/logo-rceb.png" alt="Logo RCEB">
+            RCEB - Bourses & Assistance
+        </div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
