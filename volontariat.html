@@ -2,6 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <meta property="og:title" content="RCEB - Volontariat gratuit">
+    <meta property="og:description" content="Programme de volontariat : accompagnement gratuit pour étudiants motivés sans moyens financiers.">
+    <meta property="og:image" content="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
+    <meta property="og:url" content="https://RCEB47.github.io/rceb0/volontariat.html">
+    <meta property="og:type" content="website">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volontariat - RCEB</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -9,36 +15,46 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',sans-serif;background:#f9fafb;}
         .container{max-width:1000px;margin:0 auto;padding:0 20px;}
-        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;}
-        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;}
+        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;display:flex;align-items:center;gap:8px;}
+        .logo img{height:40px;vertical-align:middle;}
         .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
         .card{background:white;border-radius:24px;padding:30px;margin:20px 0;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
         .btn{background:#25d366;color:white;padding:10px 20px;border-radius:40px;text-decoration:none;display:inline-block;}
-        footer{text-align:center;padding:24px;}
+        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;}
+        footer{text-align:center;padding:24px;color:#6b7280;}
+        footer a{color:#2563eb;text-decoration:none;margin:0 6px;}
+        @media (max-width:768px){.navbar{flex-direction:column;}.logo img{height:30px;}}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
-        <div class="logo">RCEB</div>
+        <div class="logo"><img src="https://RCEB47.github.io/rceb0/logo-rceb.jpg" alt="Logo RCEB"> RCEB</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
             <a href="bourses.html">Bourses</a>
             <a href="coaching.html">Coaching</a>
             <a href="premium.html">Premium</a>
+            <a href="volontariat.html">Volontariat</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
     <div class="card">
-        <h1>🤝 Programme de volontariat</h1>
+        <h1>🤝 Programme de volontariat RCEB</h1>
         <p><strong>Accompagnement gratuit</strong> pour étudiants motivés sans moyens financiers.</p>
-        <h2>Conditions</h2>
-        <ul><li>Situation financière difficile</li><li>Motivation claire</li><li>Disponibilité</li></ul>
-        <h2>Postuler</h2>
-        <a href="https://wa.me/22899326964?text=Je%20souhaite%20postuler%20au%20volontariat%20RCEB" class="btn">📲 Postuler sur WhatsApp</a>
+        <h2>📋 Conditions</h2>
+        <ul style="margin-left:20px;"><li>Situation financière difficile</li><li>Motivation académique claire</li><li>Disponibilité régulière</li></ul>
+        <h2>🎁 Avantages</h2>
+        <ul style="margin-left:20px;"><li>Accompagnement personnalisé gratuit</li><li>Aide CV, lettre, dossier</li><li>Support WhatsApp 24/7</li></ul>
+        <h2>📝 Postuler</h2>
+        <a href="https://wa.me/22899326964?text=Je%20souhaite%20postuler%20au%20programme%20de%20volontariat%20RCEB" class="btn">📲 Postuler sur WhatsApp</a>
+        <p style="margin-top:16px;">Réponse sous 48h.</p>
     </div>
-    <footer>© RCEB - Volontariat 2025</footer>
+    <footer><p>© 2025 RCEB - Togo</p><p><a href="coaching.html">Coaching</a> | <a href="premium.html">Premium</a> | <a href="volontariat.html">Volontariat</a></p></footer>
 </div>
+<a href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20je%20souhaite%20postuler%20au%20volontariat." class="float-wa" target="_blank">💬 Une question ? Écris-nous</a>
 </body>
 </html>
