@@ -2,17 +2,25 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon (émoji) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
-    
-    <!-- Balises Open Graph (aperçu WhatsApp, Facebook, etc.) -->
-    <meta property="og:title" content="RCEB - Bourses & Assistance documentaire (Togo)">
-    <meta property="og:description" content="Accédez aux meilleures bourses internationales et aux guides PDF pour réussir votre candidature. Accompagnement expert au Togo.">
-    <meta property="og:image" content="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
-    <meta property="og:url" content="https://RCEB47.github.io/rceb0/">
-    <meta property="og:type" content="website">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- PWA / Application Android -->
+    <link rel="manifest" href="https://RCEB47.github.io/rceb0/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="RCEB">
+    <link rel="apple-touch-icon" href="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
+    
+    <!-- Service Worker -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/rceb0/service-worker.js').then(function(registration) {
+            console.log('Service Worker enregistré avec succès :', registration.scope);
+        }).catch(function(error) {
+            console.log('Échec d\'enregistrement du Service Worker :', error);
+        });
+    }
+    </script>
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6GPVEPNDQD"></script>
@@ -28,298 +36,68 @@
     <meta name="author" content="RCEB">
     <meta name="robots" content="index, follow">
     
-    <title>RCEB - Bourses & Assistance documentaire (Togo)</title>
+    <title>RCEB - Bourses & Assistance documentaire</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f9fafb;
-            color: #111827;
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        .navbar {
-            background: white;
-            border-radius: 24px;
-            margin: 16px auto;
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: #2563eb;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .logo img {
-            height: 40px;
-            vertical-align: middle;
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #1f2937;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            font-size: 0.9rem;
-        }
-        .btn-primary {
-            background: #2563eb;
-            color: white;
-        }
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        .btn-outline {
-            background: white;
-            color: #2563eb;
-            border: 1px solid #2563eb;
-        }
-        .btn-outline:hover {
-            background: #eff6ff;
-        }
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            border-radius: 24px;
-            padding: 60px 20px;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 16px;
-        }
-        .hero p {
-            font-size: 1.1rem;
-            color: #f3f4f6;
-            max-width: 90%;
-            margin: 0 auto 24px;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .features {
-            display: flex;
-            gap: 24px;
-            margin: 50px 0;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .card {
-            background: white;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            flex: 1;
-            min-width: 220px;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card h3 {
-            font-size: 1.3rem;
-            color: #2563eb;
-            margin-bottom: 12px;
-        }
-        .popular-scholarships {
-            margin: 50px 0;
-        }
-        .popular-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .popular-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            max-width: 320px;
-            transition: transform 0.2s;
-        }
-        .popular-card:hover {
-            transform: translateY(-5px);
-        }
-        .popular-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-        .popular-card-content {
-            padding: 20px;
-        }
-        .popular-card h3 {
-            color: #1e3a8a;
-            margin-bottom: 8px;
-        }
-        .badge-date {
-            background: #e0f2fe;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-        }
-        .volontariat-box {
-            background: #e0f2fe;
-            border-radius: 24px;
-            padding: 32px;
-            text-align: center;
-            margin: 40px 0;
-        }
-        .volontariat-box h3 {
-            color: #0369a1;
-            margin-bottom: 12px;
-        }
-        .form-section {
-            background: white;
-            border-radius: 24px;
-            padding: 28px;
-            margin: 40px 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-        .form-section h2 {
-            text-align: center;
-            color: #1e3a8a;
-            margin-bottom: 12px;
-        }
-        .form-section p {
-            text-align: center;
-            color: #4b5563;
-            margin-bottom: 24px;
-        }
-        iframe {
-            width: 100%;
-            min-height: 600px;
-            border-radius: 20px;
-        }
-        .testimonials {
-            background: white;
-            border-radius: 24px;
-            padding: 32px 20px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        .testimonial-grid {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 24px;
-        }
-        .testimonial-card {
-            background: #f9fafb;
-            border-radius: 20px;
-            padding: 20px;
-            max-width: 300px;
-            text-align: left;
-            border-left: 4px solid #2563eb;
-        }
-        .testimonial-card p {
-            font-style: italic;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-        .testimonial-card strong {
-            color: #1e3a8a;
-        }
-        .whatsapp {
-            background: #25d366;
-            color: white;
-            padding: 14px;
-            border-radius: 60px;
-            text-align: center;
-            margin: 30px 0;
-            font-weight: 600;
-        }
-        .counter {
-            background: #f3f4f6;
-            border-radius: 60px;
-            padding: 6px 16px;
-            display: inline-block;
-            margin-bottom: 16px;
-            font-size: 0.8rem;
-        }
-        .float-wa {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            border-radius: 50px;
-            padding: 10px 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 1000;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        footer {
-            text-align: center;
-            padding: 24px;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-            margin-top: 30px;
-            font-size: 0.8rem;
-        }
-        footer a {
-            color: #2563eb;
-            text-decoration: none;
-            margin: 0 6px;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.6rem; }
-            .hero p { font-size: 0.9rem; }
-            .card h3 { font-size: 1.1rem; }
-            .form-section { padding: 20px; }
-            iframe { min-height: 500px; }
-            .logo img { height: 30px; }
-            .testimonial-card p { font-size: 0.8rem; }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;color:#111827;overflow-x:hidden;}
+        .container{max-width:1200px;margin:0 auto;padding:0 16px;}
+        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;box-shadow:0 4px 12px rgba(0,0,0,0.03);}
+        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;display:flex;align-items:center;gap:8px;}
+        .logo img{height:40px;vertical-align:middle;}
+        .nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;font-size:0.9rem;transition:color 0.2s;}
+        .nav-links a:hover{color:#2563eb;}
+        .btn{display:inline-block;padding:10px 20px;border-radius:40px;font-weight:600;text-decoration:none;transition:0.2s;font-size:0.9rem;}
+        .btn-primary{background:#2563eb;color:white;}
+        .btn-primary:hover{background:#1d4ed8;transform:translateY(-2px);}
+        .btn-outline{background:white;color:#2563eb;border:1px solid #2563eb;}
+        .btn-outline:hover{background:#eff6ff;}
+        .hero{background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');background-size:cover;background-position:center;border-radius:24px;padding:60px 20px;text-align:center;margin:20px 0;}
+        .hero h1{font-size:2.2rem;font-weight:700;color:white;margin-bottom:16px;}
+        .hero p{font-size:1.1rem;color:#f3f4f6;max-width:90%;margin:0 auto 24px;}
+        .hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+        .features{display:flex;gap:24px;margin:50px 0;flex-wrap:wrap;justify-content:center;}
+        .card{background:white;border-radius:24px;padding:24px;box-shadow:0 8px 20px rgba(0,0,0,0.05);flex:1;min-width:220px;text-align:center;transition:transform 0.2s;}
+        .card:hover{transform:translateY(-5px);}
+        .card h3{font-size:1.3rem;color:#2563eb;margin-bottom:12px;}
+        .popular-scholarships{margin:50px 0;}
+        .popular-grid{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+        .popular-card{background:white;border-radius:24px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.08);max-width:320px;transition:transform 0.2s;}
+        .popular-card:hover{transform:translateY(-5px);}
+        .popular-card img{width:100%;height:160px;object-fit:cover;}
+        .popular-card-content{padding:20px;}
+        .popular-card h3{color:#1e3a8a;margin-bottom:8px;}
+        .badge-date{background:#e0f2fe;padding:4px 12px;border-radius:40px;font-size:0.75rem;}
+        .volontariat-box{background:#e0f2fe;border-radius:24px;padding:32px;text-align:center;margin:40px 0;}
+        .volontariat-box h3{color:#0369a1;margin-bottom:12px;}
+        .form-section{background:white;border-radius:24px;padding:28px;margin:40px 0;box-shadow:0 8px 20px rgba(0,0,0,0.05);}
+        .form-section h2{text-align:center;color:#1e3a8a;margin-bottom:12px;}
+        .form-section p{text-align:center;color:#4b5563;margin-bottom:24px;}
+        iframe{width:100%;min-height:600px;border-radius:20px;}
+        .download-apk{background:#e0f2fe;border-radius:24px;padding:28px;text-align:center;margin:40px 0;}
+        .download-apk h3{color:#0369a1;margin-bottom:12px;}
+        .testimonials{background:white;border-radius:24px;padding:32px 20px;margin:40px 0;text-align:center;}
+        .testimonial-grid{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:24px;}
+        .testimonial-card{background:#f9fafb;border-radius:20px;padding:20px;max-width:300px;text-align:left;border-left:4px solid #2563eb;}
+        .testimonial-card p{font-style:italic;margin-bottom:12px;font-size:0.9rem;}
+        .testimonial-card strong{color:#1e3a8a;}
+        .whatsapp{background:#25d366;color:white;padding:14px;border-radius:60px;text-align:center;margin:30px 0;font-weight:600;}
+        .counter{background:#f3f4f6;border-radius:60px;padding:6px 16px;display:inline-block;margin-bottom:16px;font-size:0.8rem;}
+        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;font-weight:600;font-size:0.85rem;}
+        footer{text-align:center;padding:24px;color:#6b7280;border-top:1px solid #e5e7eb;margin-top:30px;font-size:0.8rem;}
+        footer a{color:#2563eb;text-decoration:none;margin:0 6px;}
+        .social-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:20px 0;}
+        .social-links a{background:#2563eb;color:white;padding:8px 20px;border-radius:60px;text-decoration:none;font-size:0.8rem;transition:0.2s;}
+        .social-links a:hover{background:#1d4ed8;}
+        @media (max-width:768px){
+            .hero h1{font-size:1.6rem;}
+            .hero p{font-size:0.9rem;}
+            .card h3{font-size:1.1rem;}
+            .form-section{padding:20px;}
+            iframe{min-height:500px;}
+            .logo img{height:30px;}
+            .testimonial-card p{font-size:0.8rem;}
         }
     </style>
 </head>
@@ -341,9 +119,7 @@
         </div>
     </div>
 
-    <div style="text-align: center;">
-        <span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span>
-    </div>
+    <div style="text-align:center;"><span class="counter">👁️ Visiteurs : <span id="visitCount">chargement...</span></span></div>
 
     <div class="hero">
         <h1>Réalisez vos ambitions académiques avec RCEB</h1>
@@ -361,45 +137,13 @@
     </div>
 
     <div class="popular-scholarships">
-        <h2 style="font-size: 1.8rem; text-align: center; margin-bottom: 30px; color: #1e3a8a;">🔥 Bourses les plus populaires</h2>
+        <h2 style="font-size:1.8rem;text-align:center;margin-bottom:30px;color:#1e3a8a;">🔥 Bourses les plus populaires</h2>
         <div class="popular-grid">
-            <div class="popular-card">
-                <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=200&fit=crop" alt="Turquie">
-                <div class="popular-card-content">
-                    <h3>🇹🇷 Bourse Turquie 2026</h3>
-                    <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse complète : frais, logement, allocation mensuelle. Niveaux Licence, Master, Doctorat.</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="badge-date">📅 31 janv. 2026</span>
-                        <a href="bourses.html?pays=Turquie" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
-                    </div>
-                </div>
-            </div>
-            <div class="popular-card">
-                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=200&fit=crop" alt="Canada">
-                <div class="popular-card-content">
-                    <h3>🇨🇦 Bourse Vanier (Canada)</h3>
-                    <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse d’excellence pour doctorat. Financement complet + allocation.</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="badge-date">📅 1 nov. 2026</span>
-                        <a href="bourses.html?pays=Canada" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
-                    </div>
-                </div>
-            </div>
-            <div class="popular-card">
-                <img src="https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=400&h=200&fit=crop" alt="Allemagne">
-                <div class="popular-card-content">
-                    <h3>🇩🇪 Bourse DAAD (Allemagne)</h3>
-                    <p style="color: #4b5563; font-size: 0.85rem; margin-bottom: 12px;">Bourse pour étudiants africains. Master et Doctorat.</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span class="badge-date">📅 28 fév. 2026</span>
-                        <a href="bourses.html?pays=Allemagne" style="background:#2563eb; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;">Voir →</a>
-                    </div>
-                </div>
-            </div>
+            <div class="popular-card"><img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=400&h=200&fit=crop" alt="Turquie"><div class="popular-card-content"><h3>🇹🇷 Bourse Turquie 2026</h3><p style="color:#4b5563;font-size:0.85rem;margin-bottom:12px;">Bourse complète : frais, logement, allocation mensuelle.</p><div style="display:flex;justify-content:space-between;align-items:center;"><span class="badge-date">📅 31 janv. 2026</span><a href="bourses.html?pays=Turquie" style="background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;">Voir →</a></div></div></div>
+            <div class="popular-card"><img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=200&fit=crop" alt="Canada"><div class="popular-card-content"><h3>🇨🇦 Bourse Vanier (Canada)</h3><p style="color:#4b5563;font-size:0.85rem;margin-bottom:12px;">Bourse d’excellence pour doctorat. Financement complet + allocation.</p><div style="display:flex;justify-content:space-between;align-items:center;"><span class="badge-date">📅 1 nov. 2026</span><a href="bourses.html?pays=Canada" style="background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;">Voir →</a></div></div></div>
+            <div class="popular-card"><img src="https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=400&h=200&fit=crop" alt="Allemagne"><div class="popular-card-content"><h3>🇩🇪 Bourse DAAD (Allemagne)</h3><p style="color:#4b5563;font-size:0.85rem;margin-bottom:12px;">Bourse pour étudiants africains. Master et Doctorat.</p><div style="display:flex;justify-content:space-between;align-items:center;"><span class="badge-date">📅 28 fév. 2026</span><a href="bourses.html?pays=Allemagne" style="background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;">Voir →</a></div></div></div>
         </div>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="bourses.html" class="btn btn-primary" style="background:#0891b2;">🔍 Voir toutes les bourses →</a>
-        </div>
+        <div style="text-align:center;margin-top:30px;"><a href="bourses.html" class="btn btn-primary" style="background:#0891b2;">🔍 Voir toutes les bourses →</a></div>
     </div>
 
     <div class="volontariat-box">
@@ -414,8 +158,15 @@
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfS9gbmeTAwHMx1eQw875luer-3OXMbKttYd5181FObE2djTQ/viewform?embedded=true" frameborder="0">Chargement…</iframe>
     </div>
 
+    <div class="download-apk">
+        <h3>📱 Téléchargez l'application Android RCEB</h3>
+        <p>Accédez aux bourses, guides et coaching plus rapidement, même hors connexion (recommandations).</p>
+        <a href="TON_LIEN_GOOGLE_DRIVE" class="btn btn-primary" style="background:#0891b2;">📲 Télécharger l'APK</a>
+        <p style="font-size:0.75rem;margin-top:12px;">Application sécurisée – aucune donnée personnelle collectée.</p>
+    </div>
+
     <div class="testimonials">
-        <h2 style="font-size: 1.6rem; margin-bottom: 20px;">💬 Ils nous ont fait confiance</h2>
+        <h2 style="font-size:1.6rem;margin-bottom:20px;">💬 Ils nous ont fait confiance</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card"><p>"Grâce à RCEB, j’ai obtenu une bourse complète au Canada !"</p><strong>— Amara T.</strong></div>
             <div class="testimonial-card"><p>"L’accompagnement est incroyable. Je recommande vivement."</p><strong>— Koffi M.</strong></div>
@@ -427,12 +178,15 @@
 
     <footer>
         <p>© 2025 RCEB - Togo. Tous droits réservés.</p>
-        <p style="margin-top: 8px;">
-            📧 reussir9932@gmail.com | 📍 Lomé, Togo<br>
-            <a href="coaching.html">Coaching</a> | 
-            <a href="premium.html">Premium</a> | 
-            <a href="volontariat.html">Volontariat</a>
-        </p>
+        <p style="margin-top:8px;">📧 reussir9932@gmail.com | 📍 Lomé, Togo</p>
+        <div class="social-links">
+            <a href="https://wa.me/22899326964" target="_blank">💬 WhatsApp</a>
+            <a href="https://www.facebook.com/profile.php?id=61573453314820" target="_blank">📘 Facebook</a>
+            <a href="https://www.tiktok.com/@rceb_togo" target="_blank">🎵 TikTok</a>
+            <a href="https://www.youtube.com/@RCEB" target="_blank">▶️ YouTube</a>
+            <a href="https://www.linkedin.com/company/rceb" target="_blank">🔗 LinkedIn</a>
+        </div>
+        <p><a href="coaching.html">Coaching</a> | <a href="premium.html">Premium</a> | <a href="volontariat.html">Volontariat</a></p>
     </footer>
 </div>
 
