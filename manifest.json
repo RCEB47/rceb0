@@ -1,0 +1,21 @@
+{
+  "name": "RCEB Bourses",
+  "short_name": "RCEB",
+  "start_url": "https://RCEB47.github.io/rceb0/",
+  "display": "standalone",
+  "background_color": "#1e3a8a",
+  "theme_color": "#1e3a8a",
+  "description": "Bourses internationales et accompagnement pour étudiants africains",
+  "icons": [
+    {
+      "src": "https://RCEB47.github.io/rceb0/logo-rceb.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://RCEB47.github.io/rceb0/logo-rceb.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
