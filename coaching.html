@@ -2,46 +2,55 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <meta property="og:title" content="RCEB - Coaching personnalisé">
+    <meta property="og:description" content="Coaching semi, complet, premium, VIP et annuel. Préparez vos candidatures avec des experts.">
+    <meta property="og:image" content="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
+    <meta property="og:url" content="https://RCEB47.github.io/rceb0/coaching.html">
+    <meta property="og:type" content="website">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaching personnalisé - RCEB</title>
+    <title>Coaching - RCEB</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',sans-serif;background:#f9fafb;}
         .container{max-width:1000px;margin:0 auto;padding:0 20px;}
-        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;}
-        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;}
+        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;display:flex;align-items:center;gap:8px;}
+        .logo img{height:40px;vertical-align:middle;}
         .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
-        .nav-links a{text-decoration:none;color:#1f2937;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;font-size:0.9rem;}
         .coaching-card{background:white;border-radius:24px;padding:24px;margin:20px 0;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
         .price{font-size:1.8rem;font-weight:800;color:#2563eb;margin:15px 0;}
         .btn{background:#25d366;color:white;padding:10px 20px;border-radius:40px;text-decoration:none;display:inline-block;}
-        footer{text-align:center;padding:24px;}
-        @media (max-width:768px){.navbar{flex-direction:column;}}
+        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;font-size:0.85rem;}
+        footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;font-size:0.8rem;}
+        footer a{color:#2563eb;text-decoration:none;margin:0 6px;}
+        @media (max-width:768px){.navbar{flex-direction:column;}.logo img{height:30px;}}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
-        <div class="logo">RCEB</div>
+        <div class="logo"><img src="https://RCEB47.github.io/rceb0/logo-rceb.jpg" alt="Logo RCEB"> RCEB</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
+            <a href="bourses.html">Bourses</a>
             <a href="coaching.html">Coaching</a>
             <a href="premium.html">Premium</a>
+            <a href="volontariat.html">Volontariat</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
-
-    <h1 style="margin:20px 0;color:#1e3a8a;">🎓 Coaching personnalisé</h1>
-
-    <div class="coaching-card"><h2>Semi‑coaching</h2><p>CV optimisé + 3 bourses prioritaires + checklist + suivi 15 jours</p><div class="price">10 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20semi-coaching%20(10000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching complet</h2><p>Tout + lettre de motivation + simulation entretien</p><div class="price">25 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20complet%20(25000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching premium</h2><p>Accompagnement jusqu’à l’obtention de la bourse (3 mois)</p><div class="price">50 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20premium%20(50000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching VIP</h2><p>Accès direct au fondateur, réponses 24h, 6 mois</p><div class="price">100 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20VIP%20(100000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching annuel (illimité)</h2><p>Tous les services sans limite pendant 12 mois</p><div class="price">150 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20annuel%20(150000%20FCFA)" class="btn">📲 Réserver</a></div>
-
-    <footer>© RCEB - Paiement sécurisé Mobile Money</footer>
+    <h1 style="margin:20px 0;">🎓 Coaching personnalisé</h1>
+    <div class="coaching-card"><h2>Semi‑coaching</h2><p>CV optimisé + 3 bourses prioritaires + checklist + suivi 15j</p><div class="price">10 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20semi-coaching%20(10000%20FCFA)" class="btn">📲 Réserver</a></div>
+    <div class="coaching-card"><h2>Coaching complet</h2><p>+ lettre de motivation + simulation entretien</p><div class="price">25 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20complet%20(25000%20FCFA)" class="btn">📲 Réserver</a></div>
+    <div class="coaching-card"><h2>Coaching premium</h2><p>Accompagnement jusqu'à l'obtention (3 mois)</p><div class="price">50 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20premium%20(50000%20FCFA)" class="btn">📲 Réserver</a></div>
+    <div class="coaching-card"><h2>Coaching VIP</h2><p>Accès direct fondateur, réponses 24h, 6 mois</p><div class="price">100 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20VIP%20(100000%20FCFA)" class="btn">📲 Réserver</a></div>
+    <div class="coaching-card"><h2>Coaching annuel</h2><p>Tous les services, illimité, 12 mois</p><div class="price">150 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20annuel%20(150000%20FCFA)" class="btn">📲 Réserver</a></div>
+    <footer><p>© 2025 RCEB - Togo</p><p><a href="coaching.html">Coaching</a> | <a href="premium.html">Premium</a> | <a href="volontariat.html">Volontariat</a></p></footer>
 </div>
+<a href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20j%27ai%20une%20question%20sur%20le%20coaching." class="float-wa" target="_blank">💬 Une question ? Écris-nous</a>
 </body>
 </html>
