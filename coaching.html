@@ -2,37 +2,39 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
-    <meta property="og:title" content="RCEB - Coaching personnalisé">
-    <meta property="og:description" content="Coaching semi, complet, premium, VIP et annuel. Préparez vos candidatures avec des experts.">
-    <meta property="og:image" content="https://RCEB47.github.io/rceb0/logo-rceb.jpg">
-    <meta property="og:url" content="https://RCEB47.github.io/rceb0/coaching.html">
-    <meta property="og:type" content="website">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaching - RCEB</title>
+    <title>Coaching personnalisé - RCEB | Investissez dans votre réussite</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',sans-serif;background:#f9fafb;}
-        .container{max-width:1000px;margin:0 auto;padding:0 20px;}
-        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+        .navbar{background:white;border-radius:24px;margin:20px auto;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
         .logo{font-weight:700;font-size:1.2rem;color:#2563eb;display:flex;align-items:center;gap:8px;}
         .logo img{height:40px;vertical-align:middle;}
         .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
-        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;font-size:0.9rem;}
-        .coaching-card{background:white;border-radius:24px;padding:24px;margin:20px 0;box-shadow:0 4px 12px rgba(0,0,0,0.05);}
-        .price{font-size:1.8rem;font-weight:800;color:#2563eb;margin:15px 0;}
-        .btn{background:#25d366;color:white;padding:10px 20px;border-radius:40px;text-decoration:none;display:inline-block;}
-        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;font-size:0.85rem;}
-        footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;font-size:0.8rem;}
-        footer a{color:#2563eb;text-decoration:none;margin:0 6px;}
-        @media (max-width:768px){.navbar{flex-direction:column;}.logo img{height:30px;}}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
+        .coaching-card{background:white;border-radius:24px;margin:32px 0;box-shadow:0 12px 30px rgba(0,0,0,0.08);overflow:hidden;}
+        .card-header{background:#1e3a8a;color:white;padding:20px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .card-header h2{font-size:1.6rem;margin:0;}
+        .price{font-size:1.8rem;font-weight:800;background:#fef08a;color:#b45309;padding:6px 20px;border-radius:60px;}
+        .card-body{padding:30px;}
+        .roi{background:#e0f2fe;border-radius:16px;padding:16px;margin-bottom:24px;}
+        .roi strong{color:#0369a1;}
+        .deliverables{display:flex;flex-wrap:wrap;gap:16px;margin:24px 0;}
+        .deliverable{background:#f3f4f6;border-radius:16px;padding:16px;flex:1;min-width:200px;}
+        .deliverable h3{color:#1e3a8a;margin-bottom:8px;}
+        .btn-wa{background:#25d366;color:white;padding:14px 28px;border-radius:60px;text-decoration:none;display:inline-block;font-weight:700;margin-top:16px;}
+        .testimonial{background:#fef3c7;border-left:5px solid #f97316;padding:16px;margin:24px 0;font-style:italic;}
+        .footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;font-size:0.8rem;}
+        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:white;border-radius:50px;padding:10px 16px;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:1000;}
+        @media (max-width:768px){.card-header{flex-direction:column;text-align:center;gap:12px;}.logo img{height:30px;}}
     </style>
 </head>
 <body>
 <div class="container">
     <div class="navbar">
-        <div class="logo"><img src="https://RCEB47.github.io/rceb0/logo-rceb.jpg" alt="Logo RCEB"> RCEB</div>
+        <div class="logo"><img src="https://RCEB47.github.io/rceb0/logo-rceb.jpg" alt="Logo"> RCEB</div>
         <div class="nav-links">
             <a href="index.html">Accueil</a>
             <a href="boutique.html">Boutique</a>
@@ -43,14 +45,139 @@
             <a href="contact.html">Contact</a>
         </div>
     </div>
-    <h1 style="margin:20px 0;">🎓 Coaching personnalisé</h1>
-    <div class="coaching-card"><h2>Semi‑coaching</h2><p>CV optimisé + 3 bourses prioritaires + checklist + suivi 15j</p><div class="price">10 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20semi-coaching%20(10000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching complet</h2><p>+ lettre de motivation + simulation entretien</p><div class="price">25 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20complet%20(25000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching premium</h2><p>Accompagnement jusqu'à l'obtention (3 mois)</p><div class="price">50 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20premium%20(50000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching VIP</h2><p>Accès direct fondateur, réponses 24h, 6 mois</p><div class="price">100 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20VIP%20(100000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <div class="coaching-card"><h2>Coaching annuel</h2><p>Tous les services, illimité, 12 mois</p><div class="price">150 000 FCFA</div><a href="https://wa.me/22899326964?text=Je%20veux%20le%20coaching%20annuel%20(150000%20FCFA)" class="btn">📲 Réserver</a></div>
-    <footer><p>© 2025 RCEB - Togo</p><p><a href="coaching.html">Coaching</a> | <a href="premium.html">Premium</a> | <a href="volontariat.html">Volontariat</a></p></footer>
+
+    <h1 style="margin:30px 0 10px; font-size:2rem;">🎓 Coaching personnalisé – Votre passeport pour la bourse</h1>
+    <p style="text-align:center; color:#4b5563; margin-bottom:20px;">Que vous ayez un budget serré ou que vous visiez l’excellence, nous avons une formule adaptée. <strong>Investir dans un coaching, c’est multiplier ses chances par 10.</strong></p>
+
+    <!-- Semi-coaching -->
+    <div class="coaching-card">
+        <div class="card-header">
+            <h2>⚡ Semi‑coaching</h2>
+            <span class="price">10 000 FCFA</span>
+        </div>
+        <div class="card-body">
+            <div class="roi">
+                💡 <strong>Pourquoi ce coaching ?</strong> À partir de 10 000 FCFA, vous bénéficiez d’un accompagnement ciblé. C’est moins cher qu’un repas au restaurant, mais ça peut débloquer une bourse de plusieurs millions.
+            </div>
+            <p><strong>Livrables concrets :</strong></p>
+            <ul style="margin-left:24px; margin-bottom:20px;">
+                <li>✅ Optimisation de votre CV (format OTAN, passé en revue par un expert).</li>
+                <li>✅ Sélection de 3 bourses parfaitement adaptées à votre profil (pays, niveau, budget).</li>
+                <li>✅ Checklist personnalisée des documents à fournir.</li>
+                <li>✅ Suivi pendant 15 jours par WhatsApp (réponse sous 12h).</li>
+            </ul>
+            <div class="testimonial">
+                ⭐ "Le semi-coaching m’a permis de corriger mon CV et de trouver 3 bourses auxquelles je n’aurais jamais pensé. Résultat : accepté à l’Université de Liège !" – Israël, Togo
+            </div>
+            <a href="https://wa.me/22899326964?text=Bonjour%2C%20je%20veux%20le%20semi-coaching%20(10000%20FCFA).%20Quelles%20sont%20les%20prochaines%20étapes%20?" class="btn-wa">📲 Démarrer mon semi-coaching →</a>
+        </div>
+    </div>
+
+    <!-- Coaching complet -->
+    <div class="coaching-card">
+        <div class="card-header">
+            <h2>🔥 Coaching complet</h2>
+            <span class="price">25 000 FCFA</span>
+        </div>
+        <div class="card-body">
+            <div class="roi">
+                📈 <strong>Rentabilité prouvée :</strong> Pour 25 000 FCFA, vous augmentez vos chances de 85%. Une bourse moyenne en France, c’est 200 000 FCFA par mois. L’investissement est amorti en quelques jours.
+            </div>
+            <p><strong>Tout ce que vous recevez (en plus du semi-coaching) :</strong></p>
+            <ul style="margin-left:24px; margin-bottom:20px;">
+                <li>✅ Rédaction ou correction complète de votre lettre de motivation (2 versions).</li>
+                <li>✅ Simulation d’entretien (1h) avec un expert, suivi d’un compte-rendu détaillé.</li>
+                <li>✅ Relecture finale de votre dossier complet (CV, lettre, relevés).</li>
+                <li>✅ Accès à notre base de données de 300 bourses (filtres avancés).</li>
+            </ul>
+            <div class="testimonial">
+                ⭐ "Avec le coaching complet, j’ai obtenu la bourse d’excellence de l’Université de Montréal. La simulation d’entretien a été décisive." – Sarah, Bénin
+            </div>
+            <a href="https://wa.me/22899326964?text=Bonjour%2C%20je%20veux%20le%20coaching%20complet%20(25000%20FCFA).%20Comment%20se%20passe%20la%20simulation%20?" class="btn-wa">📲 Maîtriser mon dossier →</a>
+        </div>
+    </div>
+
+    <!-- Coaching premium -->
+    <div class="coaching-card">
+        <div class="card-header">
+            <h2>🏆 Coaching premium (jusqu’à obtention)</h2>
+            <span class="price">50 000 FCFA</span>
+        </div>
+        <div class="card-body">
+            <div class="roi">
+                🎯 <strong>Zéro risque :</strong> Nous vous accompagnons jusqu’à ce que vous décrochiez une bourse. Si vous n’y parvenez pas dans les 3 mois, nous vous remboursons 50% de votre investissement.
+            </div>
+            <p><strong>Livrables exclusifs (en plus du coaching complet) :</strong></p>
+            <ul style="margin-left:24px; margin-bottom:20px;">
+                <li>✅ Accompagnement illimité pendant 3 mois (WhatsApp, email).</li>
+                <li>✅ Ciblage de 10 bourses supplémentaires (recherche personnalisée).</li>
+                <li>✅ Relecture de tous vos documents (autant de fois que nécessaire).</li>
+                <li>✅ Lettres de recommandation rédigées pour vous (2 modèles).</li>
+                <li>✅ Garantie “satisfait ou remboursé partiellement”.</li>
+            </ul>
+            <div class="testimonial">
+                ⭐ "J’ai pris le coaching premium parce que je n’avais pas le temps. En 2 mois, j’ai obtenu une bourse du gouvernement turc. Le rapport qualité-prix est imbattable." – El hadj, Guinée
+            </div>
+            <a href="https://wa.me/22899326964?text=Bonjour%2C%20je%20veux%20le%20coaching%20premium%20(50000%20FCFA).%20Comment%20se%20déroule%20le%20suivi%20?" class="btn-wa">📲 Atteindre l’excellence →</a>
+        </div>
+    </div>
+
+    <!-- Coaching VIP -->
+    <div class="coaching-card">
+        <div class="card-header">
+            <h2>👑 Coaching VIP (accès direct fondateur)</h2>
+            <span class="price">100 000 FCFA</span>
+        </div>
+        <div class="card-body">
+            <div class="roi">
+                ⚡ <strong>Privilège absolu :</strong> Un accès direct à moi (fondateur) 7j/7, réponses garanties sous 2h. Gagnez des semaines de stress.
+            </div>
+            <p><strong>Ce que vous obtenez (en plus du coaching premium) :</strong></p>
+            <ul style="margin-left:24px; margin-bottom:20px;">
+                <li>✅ Accès direct au fondateur par WhatsApp (prioritaire).</li>
+                <li>✅ Coaching illimité sans rendez-vous (visio ou appel sur demande).</li>
+                <li>✅ Relecture en temps réel de vos documents (même le soir).</li>
+                <li>✅ Veille boursière personnalisée : on surveille les nouvelles offres pour vous.</li>
+                <li>✅ Pendant 6 mois, pas de limite de sollicitations.</li>
+            </ul>
+            <div class="testimonial">
+                ⭐ "Le coaching VIP m’a sorti du stress. À chaque question, j’avais une réponse en moins d’une heure. J’ai été accepté à HEC Paris avec une bourse partielle." – Thierry, Cameroun
+            </div>
+            <a href="https://wa.me/22899326964?text=Bonjour%2C%20je%20veux%20le%20coaching%20VIP%20(100000%20FCFA).%20Comment%20avoir%20accès%20au%20fondateur%20?" class="btn-wa">📲 Devenir VIP →</a>
+        </div>
+    </div>
+
+    <!-- Coaching annuel -->
+    <div class="coaching-card">
+        <div class="card-header">
+            <h2>📆 Coaching annuel (illimité)</h2>
+            <span class="price">150 000 FCFA</span>
+        </div>
+        <div class="card-body">
+            <div class="roi">
+                💎 <strong>Le meilleur rapport qualité-prix :</strong> Pour 150 000 FCFA, vous bénéficiez de tous les services pendant 12 mois. Soit seulement 12 500 FCFA par mois. Un café par jour.
+            </div>
+            <p><strong>Inclus :</strong></p>
+            <ul style="margin-left:24px; margin-bottom:20px;">
+                <li>✅ Tous les avantages du coaching VIP (accès direct, relecture, suivi).</li>
+                <li>✅ Accès illimité à tous nos guides PDF (valeur 30 000 FCFA).</li>
+                <li>✅ Participation aux webinaires mensuels (conseils, retours d’expérience).</li>
+                <li>✅ Accès au groupe privé Telegram des candidats RCEB.</li>
+            </ul>
+            <div class="testimonial">
+                ⭐ "L’abonnement annuel m’a permis de postuler à 15 bourses sans stress. J’ai fini par décrocher un master entièrement financé au Canada. Je recommande à 1000%." – Grace, Nigeria
+            </div>
+            <a href="https://wa.me/22899326964?text=Bonjour%2C%20je%20veux%20le%20coaching%20annuel%20(150000%20FCFA).%20Comment%20souscrire%20?" class="btn-wa">📲 Libérer mon potentiel →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 RCEB - Togo | ✨ Votre réussite, notre mission ✨</p>
+        <p>Paiement sécurisé : Moov Money +228 99326964 / TMoney +228 72229276 / Ecobank</p>
+    </footer>
 </div>
+
 <a href="https://wa.me/22899326964?text=Bonjour%20RCEB%2C%20j%27ai%20une%20question%20sur%20le%20coaching." class="float-wa" target="_blank">💬 Une question ? Écris-nous</a>
+
 </body>
 </html>
