@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suivi candidature - RCEB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Bourses internationales - RCEB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',sans-serif;background:#f9fafb;padding-bottom:40px;}
-        .container{max-width:800px;margin:0 auto;padding:0 20px;}
+        .container{max-width:1200px;margin:0 auto;padding:0 16px;}
         .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
         .logo{font-weight:700;font-size:1.2rem;color:#2563eb;display:flex;align-items:center;gap:8px;}
         .logo img{height:40px;}
         .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
         .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
-        .card{background:white;border-radius:24px;padding:30px;margin:20px 0;box-shadow:0 8px 20px rgba(0,0,0,0.05);}
-        h1{color:#1e3a8a;margin-bottom:16px;}
-        .info{background:#f0f9ff;padding:16px;border-radius:16px;margin:20px 0;}
-        .product-list{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0;}
-        .product-item{background:#f3f4f6;border-radius:16px;padding:12px;flex:1;text-align:center;}
-        .btn{background:#2563eb;color:white;padding:12px 20px;border-radius:60px;text-decoration:none;display:inline-block;margin:8px 0;border:none;cursor:pointer;}
-        .btn-success{background:#0891b2;}
-        input,select{width:100%;padding:12px;border-radius:40px;border:1px solid #d1d5db;margin:8px 0;}
-        .footer{text-align:center;padding:24px;color:#6b7280;}
-        @media (max-width:768px){.navbar{flex-direction:column;}}
+        .tab-buttons{display:flex;gap:16px;margin:20px 0 0;border-bottom:1px solid #e5e7eb;}
+        .tab-btn{background:none;border:none;padding:10px 20px;font-size:1rem;font-weight:600;cursor:pointer;color:#6b7280;transition:0.2s;}
+        .tab-btn.active{color:#2563eb;border-bottom:2px solid #2563eb;}
+        .filters{background:white;border-radius:20px;padding:20px;margin:20px 0;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
+        .filter-group{display:flex;flex-direction:column;gap:4px;}
+        .filter-group label{font-weight:600;font-size:0.75rem;}
+        input,select{padding:8px 12px;border-radius:40px;border:1px solid #d1d5db;font-family:inherit;}
+        button{background:#2563eb;color:white;border:none;padding:8px 20px;border-radius:40px;cursor:pointer;font-weight:600;}
+        .results-count{margin:16px 0;font-weight:600;}
+        .bourse-card{background:white;border-radius:20px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:flex;flex-wrap:wrap;overflow:hidden;}
+        .bourse-img{width:200px;height:140px;object-fit:cover;flex-shrink:0;}
+        .bourse-info{padding:16px;flex:1;}
+        .bourse-title{font-size:1.2rem;font-weight:700;color:#1e3a8a;}
+        .bourse-meta{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap;}
+        .badge{background:#e0f2fe;color:#0369a1;padding:4px 10px;border-radius:40px;font-size:0.7rem;}
+        .deadline{color:#b91c1c;}
+        .bourse-desc{color:#4b5563;margin:8px 0;font-size:0.85rem;}
+        .btn-link{background:#2563eb;color:white;padding:6px 16px;border-radius:40px;text-decoration:none;display:inline-block;font-size:0.8rem;margin-right:8px;}
+        .btn-prepare{background:#0891b2;color:white;padding:6px 16px;border-radius:40px;border:none;cursor:pointer;font-size:0.8rem;}
+        footer{text-align:center;padding:24px;color:#6b7280;margin-top:30px;}
+        @media (max-width:768px){
+            .bourse-card{flex-direction:column;}
+            .bourse-img{width:100%;height:160px;}
+        }
     </style>
 </head>
 <body>
@@ -41,125 +55,140 @@
         </div>
     </div>
 
-    <div id="content" style="display: none;">
-        <div class="card">
-            <h1 id="bourseTitre">Chargement...</h1>
-            <div class="info" id="bourseDetails"></div>
-            
-            <h2>📚 Produits RCEB adaptés à cette bourse</h2>
-            <div class="product-list" id="produits"></div>
-            
-            <h2>🎓 Coaching personnalisé</h2>
-            <div id="coaching"></div>
-            
-            <h2>⚠️ Difficultés typiques et comment les surmonter</h2>
-            <div id="difficultes"></div>
-            
-            <h2>📧 Recevoir des alertes sur cette bourse</h2>
-            <p>Nous vous enverrons un email lorsque :</p>
-            <ul>
-                <li>La date limite approche (15 jours, 7 jours, 1 jour avant).</li>
-                <li>Le processus de sélection commence dans votre pays.</li>
-                <li>Des informations importantes sont mises à jour.</li>
-            </ul>
-            <form id="suiviForm">
-                <input type="email" id="email" placeholder="Votre email" required>
-                <input type="tel" id="whatsapp" placeholder="Votre WhatsApp (optionnel)">
-                <button type="submit" class="btn btn-success">📲 Suivre cette bourse</button>
-            </form>
-            <div id="message"></div>
-        </div>
+    <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="all">📌 Toutes les bourses</button>
+        <button class="tab-btn" data-tab="upcoming">⏰ Bourses encore postulables</button>
     </div>
-    <div id="loading">Chargement...</div>
-    <div class="footer">© 2025 RCEB - Togo</div>
+
+    <div class="filters">
+        <div class="filter-group"><label>🔍 Recherche</label><input type="text" id="search" placeholder="Titre, pays..."></div>
+        <div class="filter-group"><label>🌍 Pays</label><select id="paysFilter"><option value="">Tous</option></select></div>
+        <div class="filter-group"><label>📚 Niveau</label><select id="niveauFilter"><option value="">Tous</option></select></div>
+        <div class="filter-group"><label>📅 Tri</label><select id="tri"><option value="deadline">Date limite (proche → lointaine)</option><option value="titre">Titre A-Z</option></select></div>
+        <button id="applyFilters">Appliquer</button>
+    </div>
+
+    <div class="results-count" id="count"></div>
+    <div id="boursesList"></div>
+
+    <footer>© RCEB - Bourses mises à jour quotidiennement</footer>
 </div>
 
 <script>
     const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";
     const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5";
-    
-    // Récupérer l'ID de la bourse dans l'URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const bourseId = urlParams.get('id');
-    
-    if (!bourseId) {
-        document.getElementById('loading').innerHTML = "Aucune bourse sélectionnée.";
-    } else {
-        fetchBourse(bourseId);
-    }
-    
-    async function fetchBourse(id) {
-        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Bourses/${id}`;
+    let allRecords = [];
+    let currentTab = "all"; // "all" ou "upcoming"
+
+    const countryImages = {
+        "Canada": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=200&h=150&fit=crop",
+        "Turquie": "https://images.unsplash.com/photo-1621504450181-5d356f61d307?w=200&h=150&fit=crop",
+        "Allemagne": "https://images.unsplash.com/photo-1592280776021-d9b837f11a3c?w=200&h=150&fit=crop",
+        "Europe": "https://images.unsplash.com/photo-1565105072389-638d9c9b4cf3?w=200&h=150&fit=crop",
+        "Chine": "https://images.unsplash.com/photo-1524318323766-1b4f8c23c16e?w=200&h=150&fit=crop",
+        "France": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=200&h=150&fit=crop"
+    };
+
+    async function fetchBourses() {
+        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Bourses?maxRecords=1000`;
         try {
             const response = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` } });
-            if (!response.ok) throw new Error('Bourse non trouvée');
-            const bourse = await response.json();
-            const fields = bourse.fields;
-            document.getElementById('bourseTitre').innerText = fields.Titre;
-            document.getElementById('bourseDetails').innerHTML = `
-                <p><strong>🌍 Pays :</strong> ${fields.Pays || 'Non spécifié'}</p>
-                <p><strong>📚 Niveau :</strong> ${fields.Niveau || 'Non spécifié'}</p>
-                <p><strong>📅 Date limite :</strong> ${fields['Date limite'] ? new Date(fields['Date limite']).toLocaleDateString('fr-FR') : 'Non spécifiée'}</p>
-                <p><strong>🔗 Lien officiel :</strong> ${fields['Lien officiel'] ? `<a href="${fields['Lien officiel']}" target="_blank">${fields['Lien officiel']}</a>` : 'Non disponible'}</p>
-                <p>${fields.Description || ''}</p>
-            `;
-            
-            // Produits adaptés (exemple générique, tu pourras personnaliser selon la bourse)
-            document.getElementById('produits').innerHTML = `
-                <div class="product-item"><strong>📘 Matrice des Bourses Invisibles</strong><br>5 000 FCFA</div>
-                <div class="product-item"><strong>📄 CV Format OTAN</strong><br>3 000 FCFA</div>
-                <div class="product-item"><strong>✉️ Bible Lettre Motivation</strong><br>3 000 FCFA</div>
-                <div class="product-item"><strong>🎤 Kit Entretien STAR</strong><br>4 000 FCFA</div>
-            `;
-            
-            // Coaching adapté
-            document.getElementById('coaching').innerHTML = `
-                <p>Pour maximiser vos chances, nous vous recommandons le <strong>Coaching complet (25 000 FCFA)</strong> : optimisation du dossier, lettre de motivation, simulation d'entretien.</p>
-                <a href="https://RCEB47.github.io/rceb0/coaching.html" class="btn">🎓 Découvrir le coaching</a>
-            `;
-            
-            // Difficultés typiques (générique)
-            document.getElementById('difficultes').innerHTML = `
-                <ul>
-                    <li><strong>Manque de temps :</strong> Notre planning personnalisé vous aide à respecter les deadlines.</li>
-                    <li><strong>CV non optimisé :</strong> Utilisez notre guide CV Format OTAN, adopté par les jurys.</li>
-                    <li><strong>Lettre de motivation faible :</strong> 15 templates prêts à l'emploi dans notre Bible.</li>
-                    <li><strong>Stress des entretiens :</strong> Kit STAR avec 40 questions et scripts.</li>
-                </ul>
-                <p>RCEB vous accompagne à chaque étape. <a href="https://RCEB47.github.io/rceb0/boutique.html">Voir tous nos guides →</a></p>
-            `;
-            
-            document.getElementById('content').style.display = 'block';
-            document.getElementById('loading').style.display = 'none';
-        } catch (err) {
-            document.getElementById('loading').innerHTML = `<p style="color:red;">❌ Erreur : ${err.message}</p>`;
-        }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            allRecords = data.records.map(record => ({
+                id: record.id,
+                titre: record.fields.Titre || "Sans titre",
+                pays: record.fields.Pays || "",
+                niveau: record.fields.Niveau || "",
+                deadline: record.fields["Date limite"] || "",
+                description: record.fields.Description || "",
+                lien: record.fields["Lien officiel"] || "",
+                image: record.fields.Image || countryImages[record.fields.Pays] || "https://placehold.co/400x300/2563eb/white?text=Université"
+            }));
+            populateFilters();
+            displayBourses();
+        } catch (err) { document.getElementById('boursesList').innerHTML = `<p style="color:red;">❌ Erreur: ${err.message}</p>`; }
     }
-    
-    // Gestion du formulaire d'inscription au suivi
-    document.getElementById('suiviForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const whatsapp = document.getElementById('whatsapp').value;
-        const messageDiv = document.getElementById('message');
+
+    function populateFilters() {
+        const paysSet = new Set(), niveauSet = new Set();
+        allRecords.forEach(b => { if(b.pays) paysSet.add(b.pays); if(b.niveau) niveauSet.add(b.niveau); });
+        const paysSelect = document.getElementById('paysFilter');
+        paysSelect.innerHTML = '<option value="">Tous</option>';
+        Array.from(paysSet).sort().forEach(p => paysSelect.innerHTML += `<option value="${p}">${p}</option>`);
+        const niveauSelect = document.getElementById('niveauFilter');
+        niveauSelect.innerHTML = '<option value="">Tous</option>';
+        Array.from(niveauSet).sort().forEach(n => niveauSelect.innerHTML += `<option value="${n}">${n}</option>`);
+    }
+
+    function filterUpcoming(records) {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        return records.filter(b => {
+            if (!b.deadline) return false;
+            const deadlineDate = new Date(b.deadline);
+            return deadlineDate >= today;
+        });
+    }
+
+    function displayBourses() {
+        const searchTerm = document.getElementById('search').value.toLowerCase();
+        const paysVal = document.getElementById('paysFilter').value;
+        const niveauVal = document.getElementById('niveauFilter').value;
         
-        // Stocker cette demande dans Airtable (table "SuiviCandidatures")
-        const webhookUrl = "https://script.google.com/macros/s/TA_VOTRE_SCRIPT/exec"; // À remplacer après
-        try {
-            const response = await fetch(webhookUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, whatsapp, bourseId, bourseTitre: document.getElementById('bourseTitre').innerText })
-            });
-            if (response.ok) {
-                messageDiv.innerHTML = '<p style="color:green;">✅ Inscription enregistrée. Vous recevrez des alertes par email.</p>';
-            } else {
-                messageDiv.innerHTML = '<p style="color:red;">❌ Erreur, veuillez réessayer.</p>';
-            }
-        } catch(err) {
-            messageDiv.innerHTML = '<p style="color:red;">❌ Erreur réseau.</p>';
+        let filtered = [...allRecords];
+        if (currentTab === "upcoming") filtered = filterUpcoming(filtered);
+        
+        filtered = filtered.filter(b => {
+            if(paysVal && b.pays !== paysVal) return false;
+            if(niveauVal && b.niveau !== niveauVal) return false;
+            if(searchTerm && !b.titre.toLowerCase().includes(searchTerm) && !b.pays.toLowerCase().includes(searchTerm)) return false;
+            return true;
+        });
+        
+        if(document.getElementById('tri').value === 'deadline') {
+            filtered.sort((a,b) => (a.deadline || '9999') > (b.deadline || '9999') ? 1 : -1);
+        } else {
+            filtered.sort((a,b) => a.titre.localeCompare(b.titre));
         }
+        
+        document.getElementById('count').innerHTML = `${filtered.length} bourse(s) trouvée(s)`;
+        const container = document.getElementById('boursesList');
+        if(filtered.length === 0) { container.innerHTML = '<p>Aucune bourse.</p>'; return; }
+        
+        container.innerHTML = filtered.map(b => `
+            <div class="bourse-card">
+                <img class="bourse-img" src="${b.image}" alt="${b.pays}" loading="lazy" onerror="this.src='https://placehold.co/400x300/2563eb/white?text=Université'">
+                <div class="bourse-info">
+                    <div class="bourse-title">${b.titre}</div>
+                    <div class="bourse-meta">
+                        ${b.pays ? `<span class="badge">🌍 ${b.pays}</span>` : ''}
+                        ${b.niveau ? `<span class="badge">📚 ${b.niveau}</span>` : ''}
+                        ${b.deadline ? `<span class="badge deadline">⏰ ${new Date(b.deadline).toLocaleDateString()}</span>` : ''}
+                    </div>
+                    <div class="bourse-desc">${b.description.substring(0, 150)}...</div>
+                    <div style="margin-top: 10px;">
+                        ${b.lien && (b.lien.startsWith('http://') || b.lien.startsWith('https://')) ? `<a href="${b.lien}" target="_blank" class="btn-link">🎓 Voir l'offre officielle</a>` : ''}
+                        <button class="btn-prepare" onclick="window.location.href='suivi.html?id=${b.id}'">📝 Préparer ma candidature</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTab = btn.getAttribute('data-tab');
+            displayBourses();
+        });
     });
+
+    document.getElementById('applyFilters').addEventListener('click', displayBourses);
+    document.getElementById('search').addEventListener('keyup', displayBourses);
+    document.getElementById('tri').addEventListener('change', displayBourses);
+    fetchBourses();
 </script>
 </body>
 </html>
