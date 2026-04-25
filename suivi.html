@@ -22,7 +22,6 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-        /* Navbar */
         .navbar {
             background: white;
             border-radius: 28px;
@@ -60,7 +59,6 @@
         .nav-links a:hover {
             color: #2563eb;
         }
-        /* Loading */
         .loading-screen {
             display: flex;
             justify-content: center;
@@ -69,7 +67,6 @@
             font-size: 1.1rem;
             color: #6b7280;
         }
-        /* Carte principale */
         .card {
             background: white;
             border-radius: 32px;
@@ -126,6 +123,7 @@
         .info-value {
             font-weight: 600;
             color: #1e293b;
+            word-break: break-word;
         }
         .desc-text {
             line-height: 1.6;
@@ -200,9 +198,11 @@
             border-radius: 20px;
             margin: 20px 0;
         }
+        .difficulties-list ul {
+            margin-left: 20px;
+        }
         .difficulties-list li {
             margin-bottom: 8px;
-            margin-left: 20px;
         }
         .alert-form {
             background: #f1f5f9;
@@ -301,23 +301,29 @@
             const bourse = await response.json();
             renderBourse(bourse.fields);
         } catch (err) {
-            document.getElementById('loading').innerHTML = `<div class="loading-screen" style="color:#b91c1c;">❌ Erreur : ${err.message}</div>`;
+            document.getElementById('loading').innerHTML = `<div class="loading-screen" style="color:#b91c1c;">❌ Erreur : ${escapeHtml(err.message)}</div>`;
         }
     }
 
     function renderBourse(b) {
-        const titre = b.Titre || "Sans titre";
-        const pays = b.Pays || "Non spécifié";
-        const niveau = b.Niveau || "Non spécifié";
-        const deadline = b["Date limite"] ? new Date(b["Date limite"]).toLocaleDateString('fr-FR') : "Non spécifiée";
-        const description = b.Description || "";
-        const lien = b["Lien officiel"] || "";
+        // Protection si b est null ou undefined
+        const safeStr = (val) => (val !== undefined && val !== null) ? String(val) : '';
+        const titre = safeStr(b.Titre) || "Sans titre";
+        const pays = safeStr(b.Pays) || "Non spécifié";
+        const niveau = safeStr(b.Niveau) || "Non spécifié";
+        let deadlineStr = "Non spécifiée";
+        if (b["Date limite"]) {
+            const d = new Date(b["Date limite"]);
+            if (!isNaN(d.getTime())) deadlineStr = d.toLocaleDateString('fr-FR');
+        }
+        const description = safeStr(b.Description);
+        const lien = safeStr(b["Lien officiel"]);
 
         const html = `
             <div class="card">
                 <div class="card-header">
                     <h1>📌 ${escapeHtml(titre)}</h1>
-                    <div class="deadline-badge">📅 Date limite : ${deadline}</div>
+                    <div class="deadline-badge">📅 Date limite : ${escapeHtml(deadlineStr)}</div>
                 </div>
                 <div class="card-body">
                     <div class="info-grid">
@@ -380,12 +386,17 @@
 
     async function submitSuivi(e) {
         e.preventDefault();
-        const email = document.getElementById('email').value;
-        const whatsapp = document.getElementById('whatsapp').value;
+        const email = document.getElementById('email').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
         const messageDiv = document.getElementById('message');
+        if (!email) {
+            messageDiv.innerHTML = '<p style="color:#ef4444;">Veuillez entrer un email valide.</p>';
+            return;
+        }
         messageDiv.innerHTML = '<p style="color:#2563eb;">📡 Envoi en cours...</p>';
 
-        const bourseTitre = document.querySelector('.card-header h1').innerText.replace('📌 ', '');
+        const bourseTitreElem = document.querySelector('.card-header h1');
+        const bourseTitre = bourseTitreElem ? bourseTitreElem.innerText.replace('📌 ', '') : '';
         const bourseId = new URLSearchParams(window.location.search).get('id');
 
         try {
@@ -399,16 +410,17 @@
                 document.getElementById('suiviForm').reset();
             } else {
                 const err = await response.text();
-                messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur : ${err}</p>`;
+                messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur : ${escapeHtml(err)}</p>`;
             }
         } catch (err) {
-            messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur réseau : ${err.message}</p>`;
+            messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur réseau : ${escapeHtml(err.message)}</p>`;
         }
     }
 
     function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
+        if (str === undefined || str === null) return '';
+        const s = String(str);
+        return s.replace(/[&<>]/g, function(m) {
             if (m === '&') return '&amp;';
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
