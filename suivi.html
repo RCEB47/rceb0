@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi candidature - RCEB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Inter',sans-serif;background:#f9fafb;padding-bottom:40px;}
+        .container{max-width:800px;margin:0 auto;padding:0 20px;}
+        .navbar{background:white;border-radius:24px;margin:16px auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+        .logo{font-weight:700;font-size:1.2rem;color:#2563eb;display:flex;align-items:center;gap:8px;}
+        .logo img{height:40px;}
+        .nav-links{display:flex;flex-wrap:wrap;gap:16px;}
+        .nav-links a{text-decoration:none;color:#1f2937;font-weight:500;}
+        .card{background:white;border-radius:24px;padding:30px;margin:20px 0;box-shadow:0 8px 20px rgba(0,0,0,0.05);}
+        h1{color:#1e3a8a;margin-bottom:16px;}
+        .info{background:#f0f9ff;padding:16px;border-radius:16px;margin:20px 0;}
+        .product-list{display:flex;gap:16px;flex-wrap:wrap;margin:20px 0;}
+        .product-item{background:#f3f4f6;border-radius:16px;padding:12px;flex:1;text-align:center;}
+        .btn{background:#2563eb;color:white;padding:12px 20px;border-radius:60px;text-decoration:none;display:inline-block;margin:8px 0;border:none;cursor:pointer;}
+        .btn-success{background:#0891b2;}
+        input,select{width:100%;padding:12px;border-radius:40px;border:1px solid #d1d5db;margin:8px 0;}
+        .footer{text-align:center;padding:24px;color:#6b7280;}
+        @media (max-width:768px){.navbar{flex-direction:column;}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="navbar">
+        <div class="logo"><img src="https://RCEB47.github.io/rceb0/logo-rceb.jpg" alt="Logo"> RCEB</div>
+        <div class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="bourses.html">Bourses</a>
+            <a href="coaching.html">Coaching</a>
+            <a href="premium.html">Premium</a>
+            <a href="volontariat.html">Volontariat</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <div id="content" style="display: none;">
+        <div class="card">
+            <h1 id="bourseTitre">Chargement...</h1>
+            <div class="info" id="bourseDetails"></div>
+            
+            <h2>📚 Produits RCEB adaptés à cette bourse</h2>
+            <div class="product-list" id="produits"></div>
+            
+            <h2>🎓 Coaching personnalisé</h2>
+            <div id="coaching"></div>
+            
+            <h2>⚠️ Difficultés typiques et comment les surmonter</h2>
+            <div id="difficultes"></div>
+            
+            <h2>📧 Recevoir des alertes sur cette bourse</h2>
+            <p>Nous vous enverrons un email lorsque :</p>
+            <ul>
+                <li>La date limite approche (15 jours, 7 jours, 1 jour avant).</li>
+                <li>Le processus de sélection commence dans votre pays.</li>
+                <li>Des informations importantes sont mises à jour.</li>
+            </ul>
+            <form id="suiviForm">
+                <input type="email" id="email" placeholder="Votre email" required>
+                <input type="tel" id="whatsapp" placeholder="Votre WhatsApp (optionnel)">
+                <button type="submit" class="btn btn-success">📲 Suivre cette bourse</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </div>
+    <div id="loading">Chargement...</div>
+    <div class="footer">© 2025 RCEB - Togo</div>
+</div>
+
+<script>
+    const AIRTABLE_BASE_ID = "appgtlAjK2YHzYEmz";
+    const AIRTABLE_API_KEY = "patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5";
+    
+    // Récupérer l'ID de la bourse dans l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const bourseId = urlParams.get('id');
+    
+    if (!bourseId) {
+        document.getElementById('loading').innerHTML = "Aucune bourse sélectionnée.";
+    } else {
+        fetchBourse(bourseId);
+    }
+    
+    async function fetchBourse(id) {
+        const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Bourses/${id}`;
+        try {
+            const response = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` } });
+            if (!response.ok) throw new Error('Bourse non trouvée');
+            const bourse = await response.json();
+            const fields = bourse.fields;
+            document.getElementById('bourseTitre').innerText = fields.Titre;
+            document.getElementById('bourseDetails').innerHTML = `
+                <p><strong>🌍 Pays :</strong> ${fields.Pays || 'Non spécifié'}</p>
+                <p><strong>📚 Niveau :</strong> ${fields.Niveau || 'Non spécifié'}</p>
+                <p><strong>📅 Date limite :</strong> ${fields['Date limite'] ? new Date(fields['Date limite']).toLocaleDateString('fr-FR') : 'Non spécifiée'}</p>
+                <p><strong>🔗 Lien officiel :</strong> ${fields['Lien officiel'] ? `<a href="${fields['Lien officiel']}" target="_blank">${fields['Lien officiel']}</a>` : 'Non disponible'}</p>
+                <p>${fields.Description || ''}</p>
+            `;
+            
+            // Produits adaptés (exemple générique, tu pourras personnaliser selon la bourse)
+            document.getElementById('produits').innerHTML = `
+                <div class="product-item"><strong>📘 Matrice des Bourses Invisibles</strong><br>5 000 FCFA</div>
+                <div class="product-item"><strong>📄 CV Format OTAN</strong><br>3 000 FCFA</div>
+                <div class="product-item"><strong>✉️ Bible Lettre Motivation</strong><br>3 000 FCFA</div>
+                <div class="product-item"><strong>🎤 Kit Entretien STAR</strong><br>4 000 FCFA</div>
+            `;
+            
+            // Coaching adapté
+            document.getElementById('coaching').innerHTML = `
+                <p>Pour maximiser vos chances, nous vous recommandons le <strong>Coaching complet (25 000 FCFA)</strong> : optimisation du dossier, lettre de motivation, simulation d'entretien.</p>
+                <a href="https://RCEB47.github.io/rceb0/coaching.html" class="btn">🎓 Découvrir le coaching</a>
+            `;
+            
+            // Difficultés typiques (générique)
+            document.getElementById('difficultes').innerHTML = `
+                <ul>
+                    <li><strong>Manque de temps :</strong> Notre planning personnalisé vous aide à respecter les deadlines.</li>
+                    <li><strong>CV non optimisé :</strong> Utilisez notre guide CV Format OTAN, adopté par les jurys.</li>
+                    <li><strong>Lettre de motivation faible :</strong> 15 templates prêts à l'emploi dans notre Bible.</li>
+                    <li><strong>Stress des entretiens :</strong> Kit STAR avec 40 questions et scripts.</li>
+                </ul>
+                <p>RCEB vous accompagne à chaque étape. <a href="https://RCEB47.github.io/rceb0/boutique.html">Voir tous nos guides →</a></p>
+            `;
+            
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('loading').style.display = 'none';
+        } catch (err) {
+            document.getElementById('loading').innerHTML = `<p style="color:red;">❌ Erreur : ${err.message}</p>`;
+        }
+    }
+    
+    // Gestion du formulaire d'inscription au suivi
+    document.getElementById('suiviForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+        const messageDiv = document.getElementById('message');
+        
+        // Stocker cette demande dans Airtable (table "SuiviCandidatures")
+        const webhookUrl = "https://script.google.com/macros/s/TA_VOTRE_SCRIPT/exec"; // À remplacer après
+        try {
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, whatsapp, bourseId, bourseTitre: document.getElementById('bourseTitre').innerText })
+            });
+            if (response.ok) {
+                messageDiv.innerHTML = '<p style="color:green;">✅ Inscription enregistrée. Vous recevrez des alertes par email.</p>';
+            } else {
+                messageDiv.innerHTML = '<p style="color:red;">❌ Erreur, veuillez réessayer.</p>';
+            }
+        } catch(err) {
+            messageDiv.innerHTML = '<p style="color:red;">❌ Erreur réseau.</p>';
+        }
+    });
+</script>
+</body>
+</html>
