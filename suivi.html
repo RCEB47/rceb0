@@ -90,7 +90,7 @@
             const bourse = await response.json();
             renderBourse(bourse.fields);
         } catch (err) {
-            document.getElementById('loading').innerHTML = `<div class="loading-screen" style="color:#b91c1c;">❌ Erreur : ${err.message}</div>`;
+            document.getElementById('loading').innerHTML = `<div class="loading-screen" style="color:#b91c1c;">❌ Erreur de chargement : ${err.message}</div>`;
         }
     }
 
@@ -178,13 +178,13 @@
         const email = document.getElementById('email').value.trim();
         const whatsapp = document.getElementById('whatsapp').value.trim();
         const messageDiv = document.getElementById('message');
-        messageDiv.innerHTML = '<p style="color:#2563eb;">📡 Vérification du lien officiel...</p>';
+        messageDiv.innerHTML = '<p style="color:#2563eb;">📡 Envoi en cours...</p>';
 
         const bourseTitreElem = document.querySelector('.card-header h1');
         const bourseTitre = bourseTitreElem ? bourseTitreElem.innerText.replace('📌 ', '') : '';
         const bourseId = new URLSearchParams(window.location.search).get('id');
 
-        // Récupérer le lien officiel depuis Airtable
+        // Récupérer le lien officiel (peut être vide)
         let lienOfficiel = "";
         try {
             const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Bourses/${bourseId}`;
@@ -193,18 +193,22 @@
             const data = await response.json();
             lienOfficiel = data.fields["Lien officiel"] || "";
         } catch (err) {
-            messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur : ${err.message}</p>`;
+            messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur de récupération : ${err.message}</p>`;
             return;
         }
 
-        // Vérifier la validité du lien
-        if (!lienOfficiel || (!lienOfficiel.startsWith('http://') && !lienOfficiel.startsWith('https://'))) {
-            messageDiv.innerHTML = '<p style="color:#ef4444;">❌ Le lien officiel de cette bourse n’est pas valide. Contactez-nous.</p>';
-            return;
-        }
+        // Vérifier si le lien est valide
+        const isLinkValid = (lienOfficiel && (lienOfficiel.startsWith('http://') || lienOfficiel.startsWith('https://')));
 
-        // Construire l'email HTML
+        // Construction de l'email
         const sujet = `Confirmation suivi bourse : ${bourseTitre}`;
+        let lienHtml = "";
+        if (isLinkValid) {
+            lienHtml = `<p>🔗 Lien officiel : <a href="${lienOfficiel}" target="_blank">${lienOfficiel}</a></p>`;
+        } else {
+            lienHtml = `<p>⚠️ Le lien officiel n’est pas encore disponible pour cette bourse. Contactez-nous sur WhatsApp (+228 99326964) pour l’obtenir.</p>`;
+        }
+
         const emailHTML = `
             <!DOCTYPE html>
             <html>
@@ -219,7 +223,7 @@
                     <h2>✅ Confirmation de votre suivi</h2>
                     <p>Bonjour,</p>
                     <p>Vous avez demandé à suivre la bourse : <strong>${escapeHtml(bourseTitre)}</strong>.</p>
-                    <p>🔗 Lien officiel : <a href="${lienOfficiel}" target="_blank">${lienOfficiel}</a></p>
+                    ${lienHtml}
                     <p>Nous vous enverrons des alertes avant la date limite.</p>
                     <p>📚 Besoin d’aide ? Consultez nos <a href="https://RCEB47.github.io/rceb0/boutique.html">guides PDF</a> ou notre <a href="https://RCEB47.github.io/rceb0/coaching.html">coaching personnalisé</a>.</p>
                     <p>L’équipe RCEB<br>✨ Votre réussite, notre mission ✨</p>
@@ -228,7 +232,7 @@
             </html>
         `;
 
-        // Envoi via FormSubmit
+        // Envoi via FormSubmit (sans CORS)
         const formData = new FormData();
         formData.append('email', email);
         formData.append('subject', sujet);
@@ -238,18 +242,19 @@
         try {
             const response = await fetch('https://formsubmit.co/ajax/reussir9932@gmail.com', { method: 'POST', body: formData });
             if (response.ok) {
-                messageDiv.innerHTML = '<p style="color:#10b981;">✅ Email envoyé ! Vérifiez votre boîte de réception.</p>';
+                messageDiv.innerHTML = '<p style="color:#10b981;">✅ Inscription enregistrée. Vérifiez votre boîte email (et les spams).</p>';
                 document.getElementById('suiviForm').reset();
             } else {
-                messageDiv.innerHTML = '<p style="color:#ef4444;">❌ Erreur lors de l’envoi de l’email. Réessayez.</p>';
+                const errTxt = await response.text();
+                messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur d’envoi : ${errTxt}</p>`;
             }
         } catch (err) {
             messageDiv.innerHTML = `<p style="color:#ef4444;">❌ Erreur réseau : ${err.message}</p>`;
             return;
         }
 
-        // Option WhatsApp
-        const waMessage = `Bonjour RCEB, je souhaite suivre la bourse "${bourseTitre}". Mon email : ${email}, WhatsApp : ${whatsapp}. Lien officiel : ${lienOfficiel}`;
+        // Envoi WhatsApp (optionnel)
+        const waMessage = `Bonjour RCEB, je souhaite suivre la bourse "${bourseTitre}". Mon email : ${email}, WhatsApp : ${whatsapp}. Lien officiel : ${isLinkValid ? lienOfficiel : "non disponible"}`;
         window.open(`https://wa.me/22899326964?text=${encodeURIComponent(waMessage)}`, '_blank');
     }
 
