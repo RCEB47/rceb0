@@ -224,7 +224,6 @@
 </script>  
 
 <script>  
-    // Fonction de sécurisation (gère les valeurs non-string)  
     function escapeHtml(str) {  
         if (str === undefined || str === null) return '';  
         const s = String(str);  
@@ -241,6 +240,7 @@
         if (!container) return;  
         container.innerHTML = '<div style="text-align:center; width:100%;">Chargement...</div>';  
         try {  
+            // Utilisation de la clé API qui a fonctionné dans votre test  
             const url = 'https://api.airtable.com/v0/appgtlAjK2YHzYEmz/Bourses?maxRecords=3&sort[0][field]=Date%20limite&sort[0][direction]=asc';  
             const response = await fetch(url, {  
                 headers: { 'Authorization': 'Bearer patlKYLCFAUUxowFj.804f2e48dbd4a36b1b2ca103e91f7dd80c68c05c759d4c5f2b64ab2ecb01d5b5' }  
@@ -253,6 +253,7 @@
                 return;  
             }  
             container.innerHTML = bourses.map(b => {  
+                // Nettoyage des champs (gère les valeurs null, undefined, tableaux)  
                 const titre = b.Titre ? String(b.Titre) : 'Bourse';  
                 const pays = b.Pays ? String(b.Pays) : '';  
                 let niveau = 'Tous niveaux';  
