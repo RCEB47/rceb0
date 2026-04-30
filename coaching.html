@@ -2,27 +2,23 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coaching personnalisé - RCEB</title>
+<title>Coaching RCEB - Bourses internationales</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{
-    font-family:'Inter',sans-serif;
-    background:#f9fafb;
     margin:0;
-    color:#1f2937;
+    font-family:'Inter',sans-serif;
+    background:#f6f7fb;
+    color:#111827;
 }
 
-/* NAVBAR PRO */
+/* NAVBAR */
 .navbar{
     background:white;
-    padding:12px 24px;
-    border-radius:20px;
-    margin:20px auto;
-    max-width:1200px;
+    padding:14px 25px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -31,18 +27,15 @@ body{
 }
 
 .logo{
-    font-weight:800;
-    font-size:18px;
+    font-weight:900;
     color:#2563eb;
-    display:flex;
-    align-items:center;
-    gap:8px;
+    font-size:18px;
 }
 
 .nav-links{
     display:flex;
-    flex-wrap:wrap;
     gap:14px;
+    flex-wrap:wrap;
 }
 
 .nav-links a{
@@ -55,115 +48,94 @@ body{
     color:#2563eb;
 }
 
-/* CONTAINER */
-.container{
-    max-width:1200px;
-    margin:0 auto;
-    padding:0 20px;
-}
-
-/* CARD */
-.coaching-card{
-    background:white;
-    border-radius:24px;
-    margin:32px 0;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
-    overflow:hidden;
-}
-
-/* HEADER */
-.card-header{
-    background:#1e3a8a;
+/* HERO */
+.hero{
+    text-align:center;
+    padding:70px 20px;
+    background:linear-gradient(135deg,#1e3a8a,#2563eb);
     color:white;
-    padding:20px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
 }
 
-.card-header h2{
-    font-size:1.6rem;
+.hero h1{
+    font-size:2.2rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    opacity:0.9;
+}
+
+/* SECTION */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+/* CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
 }
 
 .price{
-    font-size:1.8rem;
-    font-weight:800;
-    background:#fef08a;
-    color:#b45309;
-    padding:6px 20px;
-    border-radius:60px;
+    font-size:1.5rem;
+    font-weight:900;
+    color:#2563eb;
+    margin:10px 0;
 }
 
-/* BODY */
-.card-body{
-    padding:30px;
-}
-
-.roi{
-    background:#e0f2fe;
-    border-radius:16px;
-    padding:16px;
-    margin-bottom:24px;
-}
-
-/* LIST */
-ul{
-    margin-left:24px;
-}
-
-/* BUTTON */
-.btn-wa{
+.btn{
+    display:inline-block;
+    margin-top:12px;
     background:#25d366;
     color:white;
-    padding:14px 28px;
-    border-radius:60px;
+    padding:12px;
+    border-radius:10px;
     text-decoration:none;
-    display:inline-block;
-    font-weight:700;
-    margin-top:16px;
+    font-weight:800;
+    width:100%;
+    text-align:center;
 }
 
-/* TESTIMONIAL */
-.testimonial{
-    background:#fef3c7;
-    border-left:5px solid #f97316;
-    padding:16px;
-    margin:24px 0;
-    font-style:italic;
+/* BEST */
+.best{
+    border:2px solid #facc15;
+}
+
+/* INFO */
+.info{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-top:20px;
 }
 
 /* FOOTER */
 .footer{
     text-align:center;
-    padding:24px;
+    padding:25px;
     color:#6b7280;
-    font-size:0.8rem;
-}
-
-/* FLOAT WHATSAPP */
-.float-wa{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25d366;
-    color:white;
-    border-radius:50px;
-    padding:12px 16px;
-    text-decoration:none;
-    font-weight:700;
-    box-shadow:0 4px 12px rgba(0,0,0,0.2);
-    z-index:1000;
+    font-size:13px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-    .card-header{
-        flex-direction:column;
-        text-align:center;
-        gap:10px;
-    }
-
     .navbar{
         flex-direction:column;
         text-align:center;
@@ -175,9 +147,7 @@ ul{
 
 <body>
 
-<div class="container">
-
-<!-- NAVBAR PRO -->
+<!-- NAVBAR COMPLET -->
 <div class="navbar">
     <div class="logo">🎓 RCEB</div>
 
@@ -193,117 +163,63 @@ ul{
     </div>
 </div>
 
-<h1 style="margin:30px 0 10px;font-size:2rem;">🎓 Coaching personnalisé – RCEB</h1>
-
-<p style="text-align:center;color:#4b5563;margin-bottom:20px;">
-Investissez dans votre réussite académique et augmentez vos chances de bourse jusqu’à 10x.
-</p>
-
-<!-- SEMI -->
-<div class="coaching-card">
-    <div class="card-header">
-        <h2>⚡ Semi-coaching</h2>
-        <span class="price">10 000 FCFA</span>
-    </div>
-
-    <div class="card-body">
-        <div class="roi">
-            Optimisation rapide + sélection de bourses adaptées.
-        </div>
-
-        <ul>
-            <li>CV optimisé</li>
-            <li>3 bourses adaptées</li>
-            <li>Checklist documents</li>
-        </ul>
-
-        <div class="testimonial">“Simple et efficace, j’ai pu améliorer mon dossier.”</div>
-
-        <a class="btn-wa" href="https://wa.me/22899326964?text=Semi-coaching RCEB">📲 Choisir</a>
-    </div>
+<!-- HERO -->
+<div class="hero">
+    <h1>🎓 Coaching bourses internationales</h1>
+    <p>Nous aidons les étudiants à transformer leur dossier et augmenter leurs chances d’obtenir une bourse internationale.</p>
 </div>
 
-<!-- COMPLET -->
-<div class="coaching-card">
-    <div class="card-header">
-        <h2>🔥 Coaching complet</h2>
-        <span class="price">25 000 FCFA</span>
-    </div>
+<!-- OFFRES -->
+<div class="container">
 
-    <div class="card-body">
-        <div class="roi">
-            Accompagnement complet + simulation d’entretien.
-        </div>
+<h2 style="text-align:center;">💼 Nos offres</h2>
 
-        <ul>
-            <li>Lettre de motivation</li>
-            <li>Simulation entretien</li>
-            <li>Dossier complet corrigé</li>
-        </ul>
+<div class="grid">
 
-        <div class="testimonial">“J’ai obtenu ma bourse grâce à la simulation.”</div>
-
-        <a class="btn-wa" href="https://wa.me/22899326964?text=Coaching complet RCEB">📲 Choisir</a>
-    </div>
+<div class="card">
+<h3>⚡ Starter</h3>
+<div class="price">10 000 FCFA</div>
+<p>Analyse CV + 2 bourses adaptées</p>
+<a class="btn" href="https://wa.me/22899326964?text=Starter RCEB">Choisir</a>
 </div>
 
-<!-- PREMIUM -->
-<div class="coaching-card">
-    <div class="card-header">
-        <h2>🏆 Coaching premium</h2>
-        <span class="price">50 000 FCFA</span>
-    </div>
-
-    <div class="card-body">
-        <div class="roi">
-            Suivi 3 mois + stratégie personnalisée.
-        </div>
-
-        <ul>
-            <li>Suivi WhatsApp</li>
-            <li>Stratégie complète</li>
-            <li>Relecture illimitée</li>
-        </ul>
-
-        <div class="testimonial">“Très bon accompagnement sur la durée.”</div>
-
-        <a class="btn-wa" href="https://wa.me/22899326964?text=Premium RCEB">📲 Choisir</a>
-    </div>
+<div class="card best">
+<h3>🔥 Standard</h3>
+<div class="price">25 000 FCFA</div>
+<p>CV + lettre + 5 bourses + checklist</p>
+<a class="btn" href="https://wa.me/22899326964?text=Standard RCEB">Choisir</a>
 </div>
 
-<!-- VIP -->
-<div class="coaching-card">
-    <div class="card-header">
-        <h2>👑 Coaching VIP</h2>
-        <span class="price">100 000 FCFA</span>
-    </div>
-
-    <div class="card-body">
-        <div class="roi">
-            Accès direct fondateur + priorité totale.
-        </div>
-
-        <ul>
-            <li>Accès fondateur</li>
-            <li>Réponse rapide</li>
-            <li>Suivi illimité</li>
-        </ul>
-
-        <div class="testimonial">“Service très professionnel et rapide.”</div>
-
-        <a class="btn-wa" href="https://wa.me/22899326964?text=VIP RCEB">📲 Choisir</a>
-    </div>
+<div class="card">
+<h3>🏆 Premium</h3>
+<div class="price">50 000 FCFA</div>
+<p>Suivi 3 mois + simulation entretien</p>
+<a class="btn" href="https://wa.me/22899326964?text=Premium RCEB">Choisir</a>
 </div>
 
-<footer class="footer">
-© 2025 RCEB - Tous droits réservés
-</footer>
+<div class="card">
+<h3>👑 VIP</h3>
+<div class="price">100 000 FCFA</div>
+<p>Accès fondateur + suivi illimité</p>
+<a class="btn" href="https://wa.me/22899326964?text=VIP RCEB">Choisir</a>
+</div>
 
 </div>
 
-<a class="float-wa" href="https://wa.me/22899326964">
-💬 WhatsApp
-</a>
+<!-- INFO -->
+<div class="info">
+<h3>📊 Résultats RCEB</h3>
+<p>✔ +200 étudiants accompagnés</p>
+<p>✔ Bourses obtenues : Canada, France, Turquie</p>
+<p>✔ Taux de réussite élevé grâce au coaching</p>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+© 2025 RCEB - Plateforme de bourses internationales
+</div>
 
 </body>
 </html>
